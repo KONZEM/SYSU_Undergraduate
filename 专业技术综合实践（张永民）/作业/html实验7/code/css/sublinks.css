@@ -1,0 +1,15 @@
+       #sublinks {
+            padding: 10px 20px;
+            margin: 0px auto;
+            width: 958px;
+            word-spacing: 6px;
+            font-size: 12px;
+            color: #000000;
+            background: #D1D1D1;
+            height: 20px;
+        }
+
+        #sublinks a:active, #sublinks a:link, #sublinks a:visited, #sublinks a:hover {
+                color: #333333;
+                text-decoration: none;
+        }

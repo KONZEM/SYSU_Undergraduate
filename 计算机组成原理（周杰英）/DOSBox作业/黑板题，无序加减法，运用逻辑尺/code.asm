@@ -1,0 +1,36 @@
+DATA SEGMENT
+X DB 10 DUP(1)
+Y DB 10 DUP(2)
+Z DB 10 DUP(0)
+DATA ENDS
+
+CODE SEGMENT
+ASSUME CS:CODE, DS:DATA
+MAIN PROC FAR
+BEGIN:
+     PUSH DS
+     MOV AX, 0
+     PUSH AX
+     MOV AX, DATA
+     MOV DS, AX
+ 
+     MOV DX, 0100101110000000B
+     MOV CX, 10                
+     MOV DI, 0
+L:   
+     MOV AL, X[DI]
+     SHL DX, 1         
+     JNC ADDT
+     SUB AL, Y[DI]
+     JMP NEXT
+ADDT:
+     ADD AL, Y[DI] 
+NEXT:
+     MOV Z[DI], AL
+     INC DI
+     LOOP L
+     
+     RET
+MAIN ENDP
+CODE ENDS
+     END BEGIN

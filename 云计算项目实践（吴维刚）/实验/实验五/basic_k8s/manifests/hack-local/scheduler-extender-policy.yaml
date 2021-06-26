@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Policy
+extenders:
+    - urlPrefix: "http://127.0.0.1:8888/"
+      filterVerb: "filter"
+      prioritizeVerb: "prioritize"
+      weight: 1
+      enableHttps: false

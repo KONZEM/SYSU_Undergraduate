@@ -1,0 +1,110 @@
+﻿<!DOCTYPE  html>
+<html lang="zh-cn">
+   <head>
+      <meta charset="utf-8"/>
+      <title>This is my title</title>
+      <style>
+         #container {
+            width: 400px;
+            height: 600px;
+            background-color: rgb(238, 238, 238);
+            margin: 0 auto;
+            padding-top: 10px;
+            padding-left: 40px;
+            padding-right: 40px;
+         }
+         #food {
+            background-color: white;
+            width: 350px;
+            height: 330px;
+            margin: 60px 10px 10px 60px;
+            position: relative;
+         }
+         #title {
+            text-align: center;
+            font-weight: bolder;
+            font-family: 宋体;
+            font-size: 30px;
+            margin: 10px auto;
+         }
+         #description {
+            font-family: 楷体;
+            text-align: left;
+            font-size: 20px;
+            margin-top: 20px;
+         }
+         .part {
+            position: absolute;
+         }
+         #p1 {
+            background-image: url('./images/food.jpg');
+            background-position: 5% 10%;
+            width: 170px;
+            height: 160px;
+            left: 3px;
+            top: 3px;
+            animation: myfirst 2s linear;
+            animation-iteration-count: 1;
+         }
+         #p2 {
+            background-image: url('./images/food.jpg');
+            background-position: 55% 10%;
+            width: 170px;
+            height: 160px;
+            right: 3px;
+            top: 3px;
+            animation: mysecond 2s linear;
+            animation-iteration-count: 1;
+         }
+         #p3 {
+            background-image: url('./images/food.jpg');
+            background-position: 5% 100%;
+            width: 170px;
+            height: 160px;
+            left: 3px;
+            bottom: 3px;
+            animation: mythird 2s linear;
+            animation-iteration-count: 1;
+         }
+         #p4 {
+            background-image: url('./images/food.jpg');
+            background-position: 55% 100%;
+            width: 170px;
+            height: 160px;
+            right: 3px;
+            bottom: 3px;
+            animation: myfourth 2s linear;
+            animation-iteration-count: 1;
+         }
+ 
+         @keyframes myfirst{
+            0% {transform: translate(-50px, -50px)}
+            100% {transform: translate(0, 0)}
+          }
+         @keyframes mysecond{
+            0% {transform: translate(50px, -50px)}
+            100% {transform: translate(0, 0)}
+          }
+         @keyframes mythird{
+            0% {transform: translate(-50px, 50px)}
+            100% {transform: translate(0, 0)}
+          }
+         @keyframes myfourth{
+            0% {transform: translate(50px, 50px)}
+            100% {transform: translate(0, 0)}
+          }
+      </style>
+   </head>
+   <body>
+     <div id="container">
+        <div id="title">美食</div>
+        <div id="description">这是一款意大利牛肉卷，采用了熏牛肉、奶酪、酱进行烹制，色泽诱人，美味可口，欢迎大家前来品尝!</div>
+        <div id="food">
+           <div id="p1" class="part"></div>
+           <div id="p2" class="part"></div>
+           <div id="p3" class="part"></div>
+           <div id="p4" class="part"></div>
+        </div>
+     </div>
+    </body>
+</html>

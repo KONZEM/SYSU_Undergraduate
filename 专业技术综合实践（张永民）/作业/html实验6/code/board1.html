@@ -1,0 +1,88 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <meta content="text/html;charset=utf-8">
+    <title>新闻板块</title>
+    <style>
+        * { 
+            margin: 0; 
+            padding: 0;  
+            line-height: 1.2em; 
+        }
+        *, a:link, a:visited, a:hover, a:active 
+        { 
+            text-decoration: none; 
+            font-size: 12px; 
+            font-family: 宋体;  
+        }
+        .clear {clear: both;}
+
+        li {list-style-type: none;}
+
+        #board1 {
+            width: 310px;
+            margin: 50px auto;
+            border: 1px solid black;
+            background-color: whitesmoke;
+        }
+
+        .boardmenu {
+            margin-bottom: 10px;
+            padding: 5px;
+            height: 18px;
+            border-bottom: dotted #a17525;
+        }
+        .boardmenu .title {
+            display: inline-block;
+            width: 250px;    
+        }
+        .boardmenu .title img {vertical-align: text-top;}
+        .boardmenu .title span {
+            color: #a17525; 
+            font-weight: bold; 
+            font-family: 黑体;
+            margin-left: 5px;
+        }
+        .boardmenu .more {display: inline-block;}
+        .boardmenu .more a { 
+            font-size: 13px;
+            font-family: sans-serif;
+            color: #a17525;  
+        }
+
+        .boardcontent li { 
+            height: 26px; 
+            margin: auto 5px;
+        }
+        .boardcontent a { 
+            font-size: 12px; 
+            color: #6f6f6f;  
+            display: inline-block;
+            width: 260px;
+        }
+        .boardcontent li:before {
+            content: url('./images/list_icon.gif')
+        }
+        span {text-align: right;}
+
+  </style>
+</head>
+<body>
+    <div id="board1" class="board">
+        <div class="boardmenu">
+            <div class="title">
+                <img src="./images/boardmenu.gif"><span>新闻</span>
+            </div>
+            <div class="more"><a href="#">&#8250;&#8250;more</a></div>
+            <div class="clear"></div>
+        </div>
+        <ul class="boardcontent">
+            <li><a href="#">超越北上广！福州再次成为中国最宜居城市</a><span>06-11</span></li>
+            <li><a href="#">俄远东第一大城市：历史上曾属中国</a><span>07-21</span></li>
+            <li><a href="#">西湖边这片绿荫即将消失，恢复需50年？</a><span>08-06</span></li>
+            <li><a href="#">爱化妆的古埃及男人和史上第一次罢工</a><span>09-16</span></li>
+            <li><a href="#">中国不敢拍的教育痛点，都在这部印度片里</a><span>10-10</span></li>
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+ /* header */ 
+ #logo {
+  bottom: 10px;
+  position: absolute;
+  left: 10px;
+ }
+
+ #version {
+  bottom: 10px;
+  position: absolute;
+  left: 270px;
+ }
+
+ #searchbox {
+  width: 350px;
+  padding: 0px 3px 0px 0px;
+  position: absolute;
+  right: 10px;
+  bottom: 20px;
+  margin: 0px;
+ }
+
+ #search {
+  border: #CCCCCC 1px solid;
+  padding: 3px;
+  width: 250px;
+  margin: 3px 0px 0px 0px;
+  color: #CCCCCC;
+ }
+
+ #cnsearchbotton {
+  vertical-align: middle;
+  width: 74px;
+  height: 28px;
+  background: url(../images/cnsearchbotton.png) no-repeat;
+  border: 0;
+  margin: 0px 0px 0px 5px;
+  cursor: pointer;
+  padding: 0px;
+ }
+ /* header end */

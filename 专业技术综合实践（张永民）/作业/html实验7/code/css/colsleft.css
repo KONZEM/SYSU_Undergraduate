@@ -1,0 +1,101 @@
+       #mainbody .cols {
+            overflow: hidden;
+        }
+
+        #mainbody .colsleft {
+            width: 726px;
+            float: left;
+            overflow: hidden;
+	    
+        }
+
+  
+
+        #mainbody .cols01 {
+            width: 358px;
+            margin: 5px 5px 0px 0px;
+            float: left;
+        }
+
+        .channel_shadow {
+            padding: 0px 0px 5px 0px;
+            background: url(../images/bo-shadow.jpg) no-repeat bottom center;
+        }
+
+        .channel {
+            border: 1px #CCCCCC solid;
+            padding: 0px;
+            background: #FFFFFF;
+            margin: 0px;
+        }
+
+        H3 {
+            padding: 0px 0px 12px 5px;
+            margin: 16px 15px 5px 15px;
+            color: #006600;
+            font-size: 14px;
+            font-weight: bold;
+            background: url(../images/line.gif) repeat-x bottom;
+        }
+
+        .newsmore {
+            float: right;
+            padding: 0px 10px 0px 10px;
+            font-weight: normal;
+            font-size: 12px;
+        }
+
+        #sysunews01, #sysunews03 {
+            padding: 0px 15px 0px 0px;
+            margin: 0px 5px 0px 0px;
+           background: url(../images/title-spe.jpg) right no-repeat;
+            cursor: pointer;
+        }
+
+        .channel LI {
+            padding-left: 12px;
+            background: url(../images/dot.png) no-repeat left;
+            font-size: 12px;
+            font-weight: normal;
+            line-height: 28px;
+        }
+
+        LI {
+            list-style: none;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .channel UL {
+            padding: 10px 15px 18px 20px;
+        }
+
+        #mainbody .gonggao {
+            margin: 0px 5px 5px 0px;
+            /*clear:both;*/
+        }
+	
+        .commontext {
+            font-size: 12px;
+            margin: 5px 15px;
+            padding: 5px 10px;
+            color: #999999;
+            line-height: 20px;
+            font-weight: normal;
+        }
+
+        .channel A:link, .channel A:visited, .channel A:active {
+            font-size: 12px;
+            font-weight: normal;
+            text-decoration: none;
+            color: #000000;
+        }
+
+        .clear {
+            clear: both;
+        }
+	  	
+        ol, ul {
+            margin: 0px;
+            padding: 0px;
+        }

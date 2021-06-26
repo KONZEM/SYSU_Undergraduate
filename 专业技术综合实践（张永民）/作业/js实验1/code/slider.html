@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Slider</title>
+    <style>
+        #slideMain {            
+            margin: 50px auto;
+            width: 770px;
+            overflow: hidden;
+            position: relative;
+        }
+        #slides {
+            width: 3080px;
+            position: relative;
+            /* animation: myanima 10s ease infinite; */
+        }
+        img {float: left}
+        .left {
+            width: 32px;
+            height: 80px;
+            background-image: url("./images/arrows-30.png");
+            background-position-x: 64px;
+            position: absolute;
+            top: 100px;
+            visibility: hidden;
+        }
+        .right {
+            width: 32px;
+            height: 80px;
+            background-image: url("./images/arrows-30.png");
+            background-position-x: 64px;
+            background-position-y: 80px;
+            position: absolute;
+            top: 100px;
+            right: 0px;
+            visibility: hidden;
+        }
+        #dots {
+            position: absolute;
+            top: 280px;
+            right: 80px;
+        }
+        .first {
+            float:left;
+            width: 12px;
+            height: 12px;
+            background-image: url("./images/navigator.png");
+            background-position-y: 12px;
+        }
+        .second {
+            float:left;
+            width: 12px;
+            height: 12px;
+            background-image: url("./images/navigator.png");
+        }
+        .third {
+            float:left;
+            width: 12px;
+            height: 12px;
+            background-image: url("./images/navigator.png");
+        }
+        #slideMain:hover > .left {visibility: visible;}
+        #slideMain:hover > .right {visibility: visible;}
+    </style>
+</head>
+<body>
+    <div id="slideMain">
+        <div id="slides" style="transform: translateX(0);">
+            <img src="images/img1.jpg">
+            <img src="images/img2.jpg">
+            <img src="images/img3.jpg">
+            <img src="images/img1.jpg">
+        </div>
+        <div class="left" onclick="forward(true)"></div>
+        <div class="right" onclick="forward(true)"></div>
+        <div id="dots">
+            <div class="first" onclick="click_dot()"></div>
+            <div class="second" onclick="click_dot()"></div>
+            <div class="third" onclick="click_dot()"></div>
+        </div>
+    </div>
+    <script>
+        var tranX = 0;
+        var cur = 0;
+        var slideMain = document.getElementById("slideMain");
+        var slides = document.getElementById("slides");
+
+        var dots = document.getElementById("dots");
+        dots.removeChild(dots.childNodes[0]);
+        dots.removeChild(dots.childNodes[1]);
+        dots.removeChild(dots.childNodes[2]);
+        dots.removeChild(dots.childNodes[3]);
+        var first = dots.childNodes[0];
+        var second = dots.childNodes[1];
+        var third = dots.childNodes[2];
+
+        var tid = window.setTimeout(set_forward, 2500);
+        var tid2 = window.setTimeout(set_slide, 0);
+
+        slideMain.addEventListener("mouseenter", function() {
+            window.clearTimeout(tid);
+            window.clearTimeout(tid2);
+            let diff = Math.abs(tranX) % 770;
+            if (diff > 380) {
+                tranX -= 770 - diff;
+                slides.style.transform = "translateX(" + tranX + "px)"; 
+                forward();
+            }
+            else {
+                tranX += diff;
+                slides.style.transform = "translateX(" + tranX + "px)"; 
+            }
+            // alert("in");
+        }
+        , false);
+        slideMain.addEventListener("mouseleave", function() {
+            tid = window.setTimeout(set_forward, 2500);
+            tid2 = window.setTimeout(set_slide, 0);
+            // alert("out");
+        }
+        , false);
+        
+        function set_slide() {
+            slide();
+            if (tranX % 770 == 0) {
+                tid2 = window.setTimeout(set_slide, 690);
+                // alert("pause");
+            }
+            else tid2 = window.setTimeout(set_slide, 6);
+        }
+        function slide() {
+            if (tranX == -2310) tranX = 0;
+            tranX -= 2;
+            slides.style.transform = "translateX(" + tranX + "px)"; 
+        }
+        function set_forward() {
+            forward(false);
+            tid = window.setTimeout(set_forward, 3000);
+        }
+        function forward(need_tran) {
+            cur = (cur + 1) % 3;
+            if (cur == 0) {
+                first.style.backgroundPositionY = 12 + "px";
+                second.style.backgroundPositionY = 0 + "px";
+                third.style.backgroundPositionY = 0 + "px";
+                if (need_tran) {
+		    slides.style.transform = "translateX(-" + 0 + "px)";
+                    tranX = 0;
+                }
+            }
+            else if (cur == 1) {
+                first.style.backgroundPositionY = 0 + "px";
+                second.style.backgroundPositionY = 12 + "px";
+                third.style.backgroundPositionY = 0 + "px";
+                if (need_tran) {
+                    slides.style.transform = "translateX(-" + 770 + "px)";
+                    tranX = -770;
+                }
+            }
+            else if (cur == 2) {
+                first.style.backgroundPositionY = 0 + "px";
+                second.style.backgroundPositionY = 0 + "px";
+                third.style.backgroundPositionY = 12 + "px";
+                if (need_tran) {
+                    slides.style.transform = "translateX(-" + 1540 + "px)";
+                    tranX = -1540;
+                }
+            }
+        }
+        function click_dot() {
+            if (event.srcElement == first) {
+                first.style.backgroundPositionY = 12 + "px";
+                second.style.backgroundPositionY = 0 + "px";
+                third.style.backgroundPositionY = 0 + "px";
+                slides.style.transform = "translateX(-" + 0 + "px)";
+                tranX = 0;
+                cur = 0;
+            }
+            else if (event.srcElement == second) {
+                first.style.backgroundPositionY = 0 + "px";
+                second.style.backgroundPositionY = 12 + "px";
+                third.style.backgroundPositionY = 0 + "px";
+                slides.style.transform = "translateX(-" + 770 + "px)";
+                tranX = -770;
+                cur = 1;
+            }
+            else if (event.srcElement == third) {
+                first.style.backgroundPositionY = 0 + "px";
+                second.style.backgroundPositionY = 0 + "px";
+                third.style.backgroundPositionY = 12 + "px";
+                slides.style.transform = "translateX(-" + 1540 + "px)";
+                tranX = -1540;
+                cur = 2;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html;charset=utf-8" />
+    <title>动态图片加载</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        .list {
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+<body>
+    <h1>动态图片加载</h1>
+    <div id="content">
+    </div>
+    <script type="text/javascript">
+        var allImgs = "";
+        var imgPath = "./imgs/";
+        for (var i = 1; i < 60; i++) {
+            allImgs += '<div  class="list"><img xSrc="' + imgPath + i + '.jpg"';
+            allImgs += ' src="' + imgPath + 'pixel.gif" width="200" height="250" ';
+            allImgs += ' style="background:url(' + imgPath + 'wait.gif) no-repeat center;" /><br />图片' + i + '</div>';
+        }
+        document.getElementById("content").innerHTML = allImgs;
+        function windowHeight() {    //获取页面浏览器客户区的高度
+            return (document.compatMode == "CSS1Compat") ? document.documentElement.clientHeight
+                : document.body.clientHeight;
+        }
+        function showImages() {
+            var docImg = document.images;
+            var cnt = docImg.length;
+            if (!cnt) return false;
+            for (var i = 0; i < cnt; i++) {
+                var o = docImg[i], imgHeight = 250;
+                if (o.getBoundingClientRect().top > 0 && o.getBoundingClientRect().top < windowHeight() || o.getBoundingClientRect().bottom > 0 && o.getBoundingClientRect().bottom < windowHeight()) 
+                    o.src = "./imgs/" + (i+1) + ".jpg";
+            };
+        };
+        window.onscroll = function () {
+            setTimeout(function () { showImages() }, 1200);
+        }
+        showImages();
+    </script>
+</body>
+</html>

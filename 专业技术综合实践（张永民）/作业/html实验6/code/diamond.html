@@ -1,0 +1,33 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <meta content="text/html;charset=utf-8">
+    <title>diamond</title>
+    <style>
+    .diamond1 {
+        height: 0px;
+        width: 50px;
+        background-color: white;
+        border-bottom: 15px red solid;
+        border-left: 10px transparent solid;
+        border-right: 10px transparent solid;
+        position: relative;
+     }
+    .diamond1::before {
+        content: "";
+        width: 0px;
+        height: 0px;
+        border-top: 35px red solid;
+        border-left: 35px transparent solid;
+        border-right: 35px transparent solid;
+        position: absolute;
+        top:15px;
+        left: -10px;
+
+    }
+    </style>  
+</head>
+<body>
+    <div class="diamond1"></div>
+</body>
+</html>

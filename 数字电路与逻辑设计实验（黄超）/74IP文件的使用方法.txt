@@ -1,0 +1,4 @@
+74IP的使用方法：
+创建工程-左上部分的source栏-第五个按钮：指定和创建源文件添加到工程-
+选第三个（Add or create simulation sources）-
+Next-左上角加号-Add Directories-然后选择74IP里面的文件夹-Finish

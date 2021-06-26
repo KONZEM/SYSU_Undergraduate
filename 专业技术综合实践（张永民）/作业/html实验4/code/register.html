@@ -1,0 +1,65 @@
+﻿<!DOCTYPE  html>
+<html  lang="zh-cn">
+  <head>
+  <meta charset="utf-8">
+  <title>用户注册</title>
+  <style type="text/css">
+      * {
+        font-size:20px;
+        font-family:宋体;
+        }
+      input[type="text"], textarea {color: grey;}
+      input[type="text"] {width: 30em;}
+      [for="content"] {vertical-align: top;}
+      fieldset {
+        width:800px;
+        margin:20px auto;
+        padding:20px;
+        background-color: #FCFCFF;
+      }
+      #content {
+        width:700px;
+        height:300px;
+      }
+      input:focus {background-color: yellow;}
+      input:checked + span {color: red;}
+      input:disabled, button:disabled {color: yellow;}
+      textarea::selection {
+        color: white;
+        background-color: blue;
+      }
+  </style>
+  </head>
+  <body>
+    <fieldset>
+    <legend>用户注册</legend>
+    <form action="edit.jsp" method="post" >
+    <p><label for="title">姓名：</label>
+      <input name="name" type="text" maxlength=60 placeholder="输入姓名"></p>
+    <p><label for="keywords">密码：</label>
+      <input name="pass" type="password" maxlength=60 placeholder="输入密码"></p>
+    <p><label for="edu">学历：</label>
+      <input type="radio" name="edu" value="edu1"><span>初中及以下</span> 
+      <input type="radio" name="edu" value="edu2"><span>高中</span>
+      <input type="radio" name="edu" value="edu3"><span>大学及以上</span></p>
+    <p><label for="hometown">籍贯：</label>
+      <select name="background" value="background1"> 
+            <option value="bg1">广东</option>
+            <option value="bg2" selected>湖南</option>
+            <option value="bg3">广西</option>
+            <option value="bg4">湖北</option>
+      </select></p>
+    <p><label for="hobby">兴趣爱好：</label>
+          <input name="hobby" type="checkbox" value="h1"><span>阅读</span>
+          <input name="hobby" type="checkbox" value="h2"><span>艺术</span> 
+          <input name="hobby" type="checkbox" value="h3" checked><span>体育</span> 
+          <input name="hobby" type="checkbox" value="h4"><span>音乐</span></p>
+    <p><label for="content">其它：</label>
+          <textarea name="content" id="content" placeholder="在这里输入其它内容"></textarea></p>
+    <input name="save" type="submit" disabled value="保存">&nbsp;&nbsp;
+    <input name="exit" type="submit" value="退出"> &nbsp;&nbsp;
+    <button name="clear" type="reset" disabled >复位</button> </p>
+    </form>
+    </fieldset>
+  </body>
+</html>

@@ -1,0 +1,66 @@
+2019年秋季-数据科学与计算机学院“科技论文阅读与写作课” 第二次作业模板
+
+Jan 1, 2020
+
+
+
+学号：
+
+姓名：
+
+
+
+## ============================== Part-I
+
+
+
+The bibtex information of the paper assigned to you:
+
+
+
+For example:
+
+@inproceedings{feng2018deepmove,
+
+  title={Deepmove: Predicting human mobility with attentional recurrent networks},
+
+  author={Feng, Jie and Li, Yong and Zhang, Chao and Sun, Funing and Meng, Fanchao and Guo, Ang and Jin, Depeng},
+
+  booktitle={Proc. of the 2018 World Wide Web Conference  (WWW'2018)},
+
+  pages={1459--1468},
+
+  year={2018}
+
+}
+
+
+
+PS: You can find the bibtex information of your paper from Google Scholar.
+
+
+
+## ============================== Part-II
+
+PS: You can write the answers to each question with arbitrary length.
+
+
+
+Questions:
+
+
+
+1. What is this paper doing?
+
+
+
+2. What are the contributions of this paper? (Please write the contributions using your own words, TA will compare your answer with the contributions summarized in the paper.)
+
+​
+
+3. If applicable, please describe the methodology/algorithm proposed in the paper.
+
+
+
+4. What are the key findings and implications of this paper?
+

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <title>编程器</title>
+    <script>
+        function work() {
+            var x = document.getElementById("x");
+            var y = document.getElementById("y");
+            if (x.value == "" || y.value == "") return ;
+            var program = document.getElementById("program");
+            var func = new Function("x", "y", program.value);
+            func(x.value, y.value);   
+        }
+    </script>
+</head>
+
+<body>
+    <h1>编程器</h1>
+    <p style="white-space: pre;">      x:<input type="text", id="x" /></p>
+    <p style="white-space: pre;">      y:<input type="text", id="y" /></p>
+    <p>program:<textarea id="program" style="vertical-align: top;" cols="30" rows="10"></textarea></p>
+    <p style="white-space: pre;">        <input type="button" value="运行" onclick="work();"/></p>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+1.
+CREATE TABLE Worker(
+	Number CHAR(5), 
+	Name CHAR(8) CONSTRAINT U1 UNIQUE,
+	Sex CHAR(1), 
+	Sage INT CONSTRAINT U2 CHECK (Sage<=28), 
+	Department CHAR(20), 
+	CONSTRAINT PK_Worker PRIMARY KEY (Number))
+ALTER TABLE Worker ADD CONSTRAINT U3 CHECK (Sage>=0);
+
+2.
+INSERT INTO Worker VALUES('00001', '李勇', 'M', -1, '科技部');
+
+结果：
+INSERT 语句与 CHECK 约束"U3"冲突。该冲突发生于数据库"School"，表"dbo.Worker", column 'Sage'。
+语句已终止。
+
+3.
+INSERT INTO Worker VALUES('00001', '李勇', 'M', 20, '科技部');
+
+结果：
+(1 行受影响)
+
+4.
+ALTER TABLE Worker ADD CONSTRAINT U4 CHECK (Sage<0);
+
+结果：
+执行失败，因为之前已经有约束U3约束Sage要大于等于0，现在约束U4又要约束Sage要小于0，这是不可满足的、冲突的，所以执行失败。
+
+5.
+GO
+CREATE RULE RULE_Sage AS @VALUE BETWEEN 1 AND 100
+GO 
+EXEC sp_bindrule RULE_Sage, 'Worker.[Sage]'
+
+6.
+INSERT INTO Worker VALUES('00002', '王勇', 'M', 0, '科技部');
+
+结果：
+列的插入或更新与先前的 CREATE RULE 语句所指定的规则发生冲突。该语句已终止。冲突发生于数据库 'School'，表 'dbo.Worker'，列 'Sage'。
+语句已终止。
+
+7.
+EXEC sp_unbindrule 'Worker.[Sage]'
+INSERT INTO Worker VALUES('00002', '王勇', 'M', 0, '科技部');
+
+结果：
+已解除了表列与规则之间的绑定。
+
+(1 行受影响)
+
+8.
+GO
+CREATE RULE RULE2_Sage AS @VALUE > 50
+GO 
+EXEC sp_bindrule RULE_Sage, 'Worker.[Sage]'
+
+结果：可以成功，因为这个规则约束的后来的更新或插入，对之前已经存在的记录不做约束。
+

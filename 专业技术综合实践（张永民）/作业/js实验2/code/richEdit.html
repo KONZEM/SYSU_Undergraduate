@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Rich Text Editing</title>
+</head>
+<body>
+    <iframe name="edit" style="height: 200px; width: 600px;"></iframe><br/>
+    <input type="button" value="斜体" onclick="italic()" />
+    <input type="button" value="颜色" onclick="color()" />
+    <input type="button" value="字号" onclick="font_size()" />
+    <input type="button" value="图像" onclick="img()" />
+    <input type="button" value="链接" onclick="link()" />
+    <input type="button" value="撤销" onclick="cancel()" />
+    <input type="button" value="代码" onclick="code()" />
+    <script>
+        frames["edit"].document.designMode = "on";
+        function italic() {
+            frames["edit"].document.execCommand("italic", false, null);
+        }
+        function color() {
+            frames["edit"].document.execCommand("forecolor", false, "red");
+        }
+        function font_size() {
+            frames["edit"].document.execCommand("fontsize", false, 7);
+        }
+        function img() {
+            frames["edit"].document.execCommand("insertimage", false, "./images/home.gif");
+        }
+        function link() {
+            frames["edit"].document.execCommand("createlink", false, null);
+        }
+        function cancel() {
+            frames["edit"].document.execCommand("undo", false, null);
+        }
+        function code() {
+            alert(frames["edit"].document.body.innerHTML);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <style>
+      div {
+        border: solid 1px black;
+        border-radius: 50%;
+        width: 80px;
+        height: 80px;
+        float:left;
+        margin:20px;
+      }
+      #test1 {
+        background-image: radial-gradient(at 20px 40px, white, blue 80%, blue 100%);
+      }
+
+      #test2 {
+        background-image: linear-gradient(90deg, white, blue 40%,  blue 100%);
+      }
+
+      #test3 {
+         background-color: hsla(340,100%,50%,1);
+         /* background-image: radial-gradient(at 0px 0px, hsla(340, 100%, 50%, 1), red 50%, black); */
+         box-shadow: 20px 20px 15px rgba(50%, 50%, 50%, 0.5), inset -25px -20px 15px rgba(50%, 50%, 50%, 0.6);
+      }
+   </style>
+
+</head>
+<body>
+
+    <div id="test1">
+    </div>
+    <div id="test2">
+    </div>
+    <div id="test3">
+    </div>
+</body>
+</html>

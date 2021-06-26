@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <title>计算器</title>
+    <style>
+        input {
+            width: 5em
+        }
+  </style>
+</head>
+
+<body>
+    <h1>计算器</h1>
+    <p><input type="text" id="num1"> + <input type="text" id="num2"> = <span id="result">?</span></p>
+    <input type="button" value="计算" onclick="calc();">
+    <script>
+        function calc() {
+            var input1 = document.getElementById("num1");
+            var input2 = document.getElementById("num2");
+            var res = document.getElementById("result");
+            if (input1.value == "" || input2.value == "") return ;
+            var a = Number(input1.value), b = Number(input2.value);
+            res.innerText = String(a+b);
+    }
+    </script>
+</body>
+
+</html>

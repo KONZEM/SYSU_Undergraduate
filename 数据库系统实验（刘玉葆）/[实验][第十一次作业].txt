@@ -1,0 +1,96 @@
+1.
+CREATE TABLE Worker(
+	Number CHAR(5), 
+	Name CHAR(8) CONSTRAINT U1 UNIQUE,
+	Sex CHAR(1), 
+	Sage INT CONSTRAINT U2 CHECK (Sage<=28), 
+	Department CHAR(20), 
+	CONSTRAINT PK_Worker PRIMARY KEY (Number))
+INSERT INTO Worker VALUES('00001', '李勇', 'M', 14, '科技部')
+----------------------------------------------------------
+GO
+CREATE TRIGGER T4 ON Worker
+FOR INSERT
+AS
+IF (SELECT Sage FROM INSERTED) < (SELECT MAX(Sage) FROM Worker WHERE Number != (SELECT Number FROM INSERTED))
+BEGIN
+PRINT 'Sage must be larger than any Sage in Worker'
+ROLLBACK TRANSACTION
+END
+
+2.
+INSERT INTO Worker VALUES('00002', '王勇', 'M', 10, '科技部')
+------------------------------------------------------------
+结果：
+Sage must be larger than any Sage in Worker
+消息 3609，级别 16，状态 1，第 1 行
+事务在触发器中结束。批处理已中止。
+
+3.
+CREATE TRIGGER T5 ON Worker
+FOR UPDATE
+AS
+IF (SELECT Sage FROM INSERTED) < (SELECT Sage FROM DELETED)
+BEGIN
+PRINT 'New Sage must be larger than former Sage'
+ROLLBACK TRANSACTION
+END
+
+4.
+UPDATE Worker SET Sage=10 WHERE Number='00001'
+------------------------------------------------------------
+结果：
+New Sage must be larger than former Sage
+消息 3609，级别 16，状态 1，第 1 行
+事务在触发器中结束。批处理已中止。
+
+5.
+GO
+CREATE TRIGGER T6 ON Worker
+FOR UPDATE
+AS
+IF (SELECT Number FROM INSERTED)='00001'
+BEGIN
+PRINT 'Can not be deleted'
+ROLLBACK TRANSACTION
+END
+
+6.
+CREATE TABLE Stu_Card(
+	card_id CHAR (14), 
+	stu_id CHAR (10) REFERENCES STUDENTS(sid) ON DELETE CASCADE, 
+	remained_money DECIMAL (10, 2), 
+	CONSTRAINT PK_stu_card PRIMARY KEY (card_id));
+----------------------------------------------------------------
+CREATE VIEW StudentStu_Card AS
+SELECT st.sid, st.sname, sc.card_id, sc.remained_money
+FROM STUDENTS st, Stu_Card sc
+WHERE ST.sid=sc.stu_id
+----------------------------------------------------------------
+CREATE TRIGGER T ON StudentStu_Card
+INSTEAD OF INSERT
+AS 
+BEGIN
+	SET NOCOUNT ON
+	IF(NOT EXISTS
+		(SELECT s.sid FROM STUDENTS s, INSERTED i
+		WHERE s.sid=i.sid
+		)
+	)
+	BEGIN
+		INSERT INTO STUDENTS
+			SELECT sid, sname, NULL, NULL FROM INSERTED
+		INSERT INTO Stu_Card
+			SELECT card_id, sid, remained_money FROM INSERTED
+	END
+	ELSE PRINT '数据已存在'
+END
+----------------------------------------------------------------
+--INSERT INTO StudentStu_Card VALUES('1000', 'TOM', '10010', 100.00)
+----------------------------------------------------------------
+结果：
+sid        sname                          card_id        remained_money
+---------- ------------------------------ -------------- ---------------------------------------
+1000       TOM                            10010          100.00
+
+(1 行受影响)

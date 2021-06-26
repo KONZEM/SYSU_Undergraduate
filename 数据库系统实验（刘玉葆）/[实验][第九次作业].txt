@@ -1,0 +1,114 @@
+1.
+CREATE TABLE Stu_Union(
+	sno CHAR(5) NOT NULL UNIQUE,
+	sname CHAR(8),
+	ssex CHAR(1),
+	saage INT,
+	sdept CHAR (20),
+	CONSTRAINT PK_Stu_Union PRIMARY KEY(sno));
+INSERT INTO Stu_Union VALUES ('10001', '李勇', '0', 24, 'EE');
+INSERT INTO Stu_Union VALUES ('95002', '王敏', '1', 23, 'CS');
+INSERT INTO Stu_Union VALUES ('95003', '王浩', '0', 25, 'EE');
+INSERT INTO Stu_Union VALUES ('95005', '王杰', '0', 25, 'EE');
+INSERT INTO Stu_Union VALUES ('95009', '李勇', '0', 25, 'EE');
+---------------------------------------------------------------
+CREATE TABLE Course (
+	cno CHAR(4) NOT NULL UNIQUE,
+	cname VARCHAR(50) NOT NULL,
+	cpoints INT,
+	CONSTRAINT PK PRIMARY KEY (cno));
+INSERT Course VALUES ('0001', 'ComputerNetworks', 2);
+INSERT Course VALUES ('0002', 'Database', 3);
+---------------------------------------------------------------
+CREATE TABLE SC(
+	sno CHAR(5) REFERENCES Stu_Union (sno) ON DELETE CASCADE,
+	cno CHAR(4) REFERENCES Course(cno) ON DELETE CASCADE,
+	grade INT, 
+	CONSTRAINT PK_SC PRIMARY KEY (sno, cno));
+INSERT INTO SC VALUES ('95002', '0001', 2);
+INSERT INTO SC VALUES ('95002', '0002', 2);
+INSERT INTO SC VALUES ('10001', '0001', 2);
+INSERT INTO SC VALUES ('10001', '0002', 2);
+---------------------------------------------------------------
+ALTER TABLE SC DROP FK__SC__sno__44FF419A;
+ALTER TABLE SC DROP FK__SC__cno__45F365D3;
+ALTER TABLE SC ADD CONSTRAINT FK_SC_sno FOREIGN KEY (sno) REFERENCES Stu_Union(sno) ON DELETE NO ACTION;
+ALTER TABLE SC ADD CONSTRAINT FK_SC_cno FOREIGN KEY (cno) REFERENCES Course(cno) ON DELETE NO ACTION;
+---------------------------------------------------------------
+DELETE FROM Stu_Union WHERE sno='10001';
+SELECT * FROM SC
+---------------------------------------------------------------
+删除失败，因为外键关联采用的是ON DELETE NO ACTION，并且在从表SC中有记录的sno属性为'10001'，所以主表Stu_Union中sno属性为'10001'的记录不准被删除，所以这里删除失败。
+
+2.
+DROP TABLE SC
+CREATE TABLE SC(
+	sno CHAR(5) REFERENCES Stu_Union (sno) ON DELETE CASCADE,
+	cno CHAR(4) REFERENCES Course(cno) ON DELETE CASCADE,
+	grade INT, 
+	CONSTRAINT PK_SC PRIMARY KEY (sno, cno));
+---------------------------------------------------------------
+ALTER TABLE SC DROP FK__SC__cno__5070F446;
+ALTER TABLE SC DROP FK__SC__sno__4F7CD00D;
+ALTER TABLE SC ADD CONSTRAINT FK_SC_sno FOREIGN KEY (sno) REFERENCES Stu_Union(sno) ON DELETE SET NULL;
+ALTER TABLE SC ADD CONSTRAINT [FK_SC_cno] FOREIGN KEY (cno) REFERENCES Course(cno) ON DELETE SET NULL;
+---------------------------------------------------------------
+改变外键属性失败，原因如下：
+如果采用ON DELETE SET NULL，并且假设表Stu_Union和表SC中都有一条sno属性为'10001'的记录，那么从表Stu_Union删除该记录，表SC中该记录的sno属性会被置为NULL，但这又与表SC定义有冲突，因为表SC定义(sno, cno)为主键，而主键不能为NULL，所以这里改变会报错。
+
+3.
+CREATE TABLE Stu_Card(
+	card_id CHAR (14), 
+	stu_id CHAR (10) REFERENCES STUDENTS(sid) ON DELETE CASCADE, 
+	remained_money DECIMAL (10, 2), 
+	CONSTRAINT PK_stu_card PRIMARY KEY (card_id));
+INSERT INTO Stu_Card VALUES ('05212567', '800001216', 100.25);
+INSERT INTO Stu_Card VALUES ('05212222', '800005753', 200.50);
+-------------------------------------------------------------------
+CREATE TABLE ICBC_Card(
+	bank_id CHAR (20),
+	stu_card_id CHAR (14) REFERENCES Stu_Card(card_id) ON DELETE CASCADE,
+	restored_money DECIMAL (10, 2),
+	CONSTRAINT PK_Icbc_Card PRIMARY KEY (bank_id)
+	);
+INSERT INTO ICBC_Card VALUES ('9558844022312', '05212567', 15000.1);
+INSERT INTO ICBC_Card VALUES ('9558844023645', '05212222', 50000.3);
+-------------------------------------------------------------------
+ALTER TABLE CHOICES DROP CONSTRAINT FK_CHOICES_STUDENTS;
+ALTER TABLE CHOICES ADD CONSTRAINT FK_CHOICES_STUDENTS FOREIGN KEY (sid) REFERENCES STUDENTS(sid) ON DELETE CASCADE;
+-------------------------------------------------------------------
+BEGIN TRANSACTION T3
+ALTER TABLE ICBC_Card DROP CONSTRAINT FK__ICBC_Card__stu_c__5BE2A6F2;
+ALTER TABLE ICBC_Card ADD CONSTRAINT FK__ICBC_Card FOREIGN KEY (stu_card_id) REFERENCES Stu_card(card_id) ON DELETE SET NULL;
+DELETE FROM STUDENTS WHERE sid = '800001216'
+SELECT * FROM Stu_Card;
+SELECT * FROM ICBC_Card;
+COMMIT TRANSACTION T3;
+--------------------------------------------------------------------
+我删除的是sid='800001216'的记录，所以表Stu_Card中stu_id属性为'800001216'的记录被删除了，因为表Stu_Card的外键属性是ON DELETE CASCADE，级联删除；而表ICBC_Card中stu_id属性为'800001216'的记录不会被删除，但stu_id属性为NULL，这是因为表ICBC_Card的外键属性是ON DELETE SET NULL，一旦主表中候选键被删除，从表中的外键值置为NULL。
+
+4.
+CREATE TABLE MUTAL_HELP(
+	sid CHAR (10), 
+	sname CHAR (30),
+	help_sid CHAR (10), 
+	CONSTRAINT PK_MUTAL_HELP PRIMARY KEY(sid));
+
+ALTER TABLE MUTAL_HELP ADD CONSTRAINT FK_MUTAL_HELP FOREIGN KEY (help_sid) REFERENCES MUTAL_HELP(sid);
+
+5.
+CREATE TABLE EVALUATE(
+	minist_id CHAR (10), 
+	member_id CHAR (10),
+	score INT,
+	CONSTRAINT PK_EVALUATE PRIMARY KEY (minist_id));
+	
+CREATE TABLE LEAD(
+	member_id CHAR (10), 
+	minist_id CHAR (10),
+	dept_name CHAR (30), 
+	CONSTRAINT PK_LEAD PRIMARY KEY (member_id),
+	CONSTRAINT FK_LEAD FOREIGN KEY (minist_id) REFERENCES EVALUATE(minist_id));
+
+ALTER TABLE EVALUATE ADD CONSTRAINT FK_EVALUATE FOREIGN KEY (member_id) REFERENCES LEAD(member_id);
+

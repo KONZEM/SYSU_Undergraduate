@@ -1,0 +1,162 @@
+<!DOCTYPE HTML>
+<html>
+<body>
+<style>
+    input[type="text"]  {
+        width:2.5em;
+    }
+    #test {
+        border:solid 1px black;
+        width:80px;
+        height:80px;
+        position:absolute;
+        top:10px;
+        left:10px;
+        background-color:rgba(255,0,0,1);
+        border-radius: 40px/40px;
+        z-index:1;
+    }
+    #exercise {        
+        margin:20px;
+        max-width:540px;
+        min-width:240px;
+    }
+    p {
+         text-indent:2em;
+    }
+
+    #container{
+        position: relative;
+        max-width:550px;
+        min-width:250px;
+        margin:10px auto;
+    }
+    h1 {
+        text-align: center;
+    }
+
+    span.title {
+        display: inline-block;
+        width: 10em;
+        text-align: left;
+    }
+
+    input[type="range"] {
+        width: 200px;
+    }
+
+    p {
+        margin-top: 10px;
+        margin-bottom: 5px;
+    }
+
+</style>
+<script>
+    var width = 540;
+    var height = 200;
+    var x = 0;
+    var y = 0;
+    var dx = 1;
+    var dy = 1;
+    function changeSlider(ind) {
+        var dest = document.getElementById("txt" + ind);
+        var src = document.getElementById("slider" + ind);
+        dest.value = src.value/((ind>=4)?100:1);
+
+        var hue= document.getElementById("slider1").value;
+        var saturation= document.getElementById("slider2").value;
+        var lightness= document.getElementById("slider3").value;
+        var alpha = document.getElementById("slider4").value/100;
+        var box = document.getElementById("test");
+        var show1 = document.getElementById("color2");
+        show1.innerHTML =  "hsla("+hue+","+saturation+"%,"+lightness+"%,"+alpha+")";
+        box.style.backgroundColor = show1.innerHTML;
+        var show2 = document.getElementById("color1");
+        var rgb = hslToRgb(hue/360, saturation/100, lightness/100);
+        show2.innerHTML = "rgba(" + rgb[0] + "," + rgb[1] + "," + rgb[2] + "," + alpha + ")";        
+    };
+    function hslToRgb(h, s, l) {
+        var r, g, b;
+        if (s == 0) {
+            r = g = b = l; // achromatic    
+        } else {
+            function hue2rgb(p, q, t) {
+                if (t < 0) t += 1;
+                if (t > 1) t -= 1;
+                if (t < 1 / 6)
+                    return p + (q - p) * 6 * t;
+                if (t < 1 / 2)
+                    return q;
+                if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
+                return p;
+            }
+            var q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+            var p = 2 * l - q;
+            r = hue2rgb(p, q, h + 1 / 3);
+            g = hue2rgb(p, q, h);
+            b = hue2rgb(p, q, h - 1 / 3);
+        }
+        return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
+    }
+
+    setTimeout(function (){
+        var box = document.getElementById("test");
+        x = x + dx;
+        y = y + dy;
+        if (x > width-40) {
+            dx = -1;
+            x = width - 40;
+        }
+        if (y > height-40) {
+            dy = -1;
+            y = height - 40;
+        }
+        if (x < 0) {
+            dx = 1;
+            x = 0;
+        }
+        if (y < 0) {
+            dy = 1;
+            y = 0;
+        }
+        box.style.left = "" + x + "px";
+        box.style.top = "" + y + "px";
+
+        setTimeout(arguments.callee, 50);
+    }, 50);
+    window.onresize = function () {
+        var div = document.getElementById('exercise');
+        height = div.clientHeight;
+        width = div.clientWidth;
+    }
+    window.onload = function () {
+        var div = document.getElementById('exercise');
+        height = div.clientHeight;
+        width = div.clientWidth;
+    }
+</script>
+
+<div id="container">
+    <h1>练习英文打字的句子</h1>
+    <div id="exercise">
+       <p> “The quick brown fox jumps over a lazy dog.”的中文翻译是“快速的棕色狐狸跳过一条懒狗.”。请注意，英文的这个句子只使用了32个字母，却将英文26个字母完全包括了。
+          这个句子还易于记忆，是英文打字练习用得最多的句子。</p>
+       <p>另外还有一个句子，也只用了32个字母，只是普遍性远不如第一句。这个句子是： Pack my box with five dozen liquor jugs. (将五打酒瓶装在我的箱子里。) 其实，
+           完全包含英文26个字母，却比上述两句更简短的句子仍有不少，像下述的句子就只动用了31个字母：The five boxing wizards jump quickly. (五个打拳的男巫快速跳动。) </p>
+       <p>如果你还想用更少的字母写这种句子，恐怕就非得动用专有字词不可了。像下述的句子就只用了29个字母： Quick wafting zephyrs vex bold Jim. (疾风使勇敢的吉姆不知所措。)
+           另外一句更短，只用了28个字母： Waltz nymph，for quickj igs vex Bud.(女神轻快的华尔滋舞步激怒了巴德。)</p>
+        <p>最后一句更称得上压轴之作，只用了26个字母。可惜却包含两个专有名词，而且还是含有缩写字母的专有名词，投机之嫌大大地减低了它的奥妙。这个句子是：J.Q.Schwartz flung D.V.Pike my box.(J.Q.Schwartz用我的箱子摔D.V.Pike。)
+          　据说，如果有人能动用英文26个字母，一个都不重复，写成一个不包含任何专有名词的句子，《吉尼斯世界纪录大全》将会把他的大名收录在内。</p>
+    </div>
+    <div id="test">
+    </div>
+
+<p><span class="title">Hue:</span><input type="range" id="slider1" min="0" max="360" value="0" onChange="changeSlider(1)"/>&nbsp;&nbsp;<input type="text" id="txt1" readonly="readonly" value="128" onChange=""/></p>
+<p><span class="title">Saturation:</span><input type="range" id="slider2" min="0" max="100"  value="100" onChange="changeSlider(2)"/>&nbsp;&nbsp;<input type="text" id="txt2" readonly="readonly"  value="50" onChange=""/></p>
+<p><span class="title">Lightness:</span><input type="range" id="slider3" min="0" max="100"  value="50" onChange="changeSlider(3)"/>&nbsp;&nbsp;<input type="text" id="txt3" readonly="readonly" value="50" onChange=""/></p>
+<p><span class="title">Alpha:</span><input type="range" id="slider4" min="0" max="100"  value="100" onChange="changeSlider(4)"/>&nbsp;&nbsp;<input type="text" id="txt4" readonly="readonly" value="0.2" onChange=""/></p>
+<p><span class="title">CSS value1：</span><span id="color2">hsla(128,128,128,0.2)</span></p>
+<p><span class="title">CSS value2：</span><span id="color1">rgba(64,191,81,0.2)</span></p>  
+</div>
+</body>
+</html>

@@ -1,0 +1,456 @@
+﻿<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>中山大学 SUN YAT-SEN UNIVERSITY </title>
+    <script src="js/menu.js"></script>
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/nav.css">
+    <link rel="stylesheet" href="./css/subnav.css">
+    <link rel="stylesheet" href="./css/indexline.css">
+    <link rel="stylesheet" href="./css/colsleft.css">
+    <link rel="stylesheet" href="./css/cols02.css">
+    <link rel="stylesheet" href="./css/quicklinks.css">
+    <link rel="stylesheet" href="./css/sublinks.css">
+    <link rel="stylesheet" href="./css/footer.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #000000;
+            font-size: 12px;
+            margin: 0px;
+            padding: 0px;
+            background: #005825;
+            background-image: url('./images/bodybg.jpg');
+            background-repeat: repeat-x;
+        }
+
+        p {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        /* test */
+        /* div {
+            border: 1px solid blue;
+        } */
+
+        /* frame */
+        #header {
+            width: 998px;
+            height: 108px;
+
+            margin: 0px auto;
+            position: relative;
+            padding: 0px;
+        }
+
+        #nav {
+            width: 998px;
+            height: 45px;
+
+            font-size: 14px;
+            color: #FFF;
+
+            margin: 0 auto;
+            padding: 0px;
+
+            font-weight: bold;
+            line-height: 45px;
+            text-align: center;
+        }
+
+        #subnav {
+            width: 998px;
+            height: 41px;
+
+            font-size: 13px;
+            margin: 0 auto;
+            text-align: left;
+            color: #006600;
+            line-height: 40px;
+        }
+
+        #main {
+            background-color: #FFFFFF;
+
+            overflow: hidden;
+            padding: 0px 0px 5px 0px;
+        }
+
+        #mainbody {
+            width: 998px;
+            height: 994px;
+
+            margin: 0px auto;
+            padding: 2px;
+        }
+
+        #quicklinks {
+            width: 998px;
+            height: 20px;
+
+            font-size: 14px;
+            color: #000000;
+            background: #D1D1D1;
+
+            padding: 12px 0px 7px 0px;
+            margin: 0px auto;
+            word-spacing: 5px;
+            font-weight: bold;
+        }
+
+        #sublinks {
+            width: 958px;
+            height: 20px;
+
+            font-size: 12px;
+            color: #000000;
+            background: #D1D1D1;
+
+            padding: 10px 20px;
+            margin: 0px auto;
+            word-spacing: 6px;
+        }
+
+        #footer {
+            width: 958px;
+            height: 85px;
+
+            font-size: 12px;
+            color: #FFFFFF;
+
+            padding: 20px 20px;
+            margin: 0px auto;
+            _height: 105px;
+        }
+
+        /* frame end */
+    </style>
+</head>
+
+<body>
+    <div id="header">
+        <div id="logo">
+            <img src="./images/logo.jpg" alt="中山大学">
+        </div>
+        <div id="version">
+            <a href="../en/index.htm">
+                <img src="./images/en-version.jpg" alt="EnglishVersion" border="0"></a>
+        </div>
+        <form name="searchingForm" action="http://zhannei.baidu.com/cse/search" target="_blank">
+            <div id="searchbox">
+                <input name="q" type="text" id="search" value="中大搜索">
+                <input type="button" id="cnsearchbotton" name="sbtn" onclick="submit()">
+            </div>
+        </form>
+    </div>
+    <!--header end-->
+
+    <div id="nav">
+        <a href="index.htm"><span class="home">&nbsp;</span></a>
+        <a href="zdgk/index.htm"><span class="sp" id="tag2"
+                onmouseover="switchTag('tag2','subnav2');this.blur();">学校概况</span></a>
+        <a href="yx/index.htm"><span class="sp" id="tag3"
+                onmouseover="switchTag('tag3','subnav3');this.blur();">院系设置</span></a>
+        <a href="xksz/index.htm"><span class="sp" id="tag4"
+                onmouseover="switchTag('tag4','subnav4');this.blur();">学科与师资</span></a>
+        <a href="jyjx/index.htm"><span class="sp" id="tag5"
+                onmouseover="switchTag('tag5','subnav5');this.blur();">教育教学</span></a>
+        <a href="kxyj/index.htm"><span class="sp" id="tag6"
+                onmouseover="switchTag('tag6','subnav6');this.blur();">科学研究</span></a>
+        <a href="zsjy/index.htm"><span class="sp" id="tag7"
+                onmouseover="switchTag('tag7','subnav7');this.blur();">招生与就业</span></a>
+        <a href="http://library.sysu.edu.cn"><span class="sp" id="tag8"
+                onmouseover="switchTag('tag8','subnav8');this.blur();">图书馆</span></a>
+        <a href="rczp/index.htm"><span class="sp" id="tag9"
+                onmouseover="switchTag('tag9','subnav9');this.blur();">人才招聘</span></a>
+        <a href="xyjj/index.htm"><span class="sp" id="tag10"
+                onmouseover="switchTag('tag10','subnav10');this.blur();">校友与基金</span></a>
+        <a href="zjzd/index.htm"><span class="sp" id="tag11"
+                onmouseover="switchTag('tag11','subnav11');this.blur();">走进中大</span></a>
+    </div>
+    <!--nav end-->
+
+    <div id="subnav">
+        <div id="subnav2" class="hidecontent">
+            <a href="zdgk/zdgk01/index.htm">中大简介</a>　|　<a href="zdgk/zdgk02/index.htm">中大校区</a>　|　<a
+                href="zdgk/zdgk03/index.htm">现任领导</a>　|　<a href="zdgk/zdgk04/index.htm">管理服务</a>　|　<a
+                href="zdgk/zdgk06/index.htm">校歌 校训 校徽</a>　|　<a href="zdgk/zdgk07/index.htm">数字中大</a>　|　<a
+                href="zdgk/zdgk05/index.htm">中大校史</a>　|　<a href="zdgk/zdgk08/index.htm">中大图志</a>
+        </div>
+        <div id="subnav3" class="hidecontent">
+        </div>
+        <div id="subnav4" class="hidecontent">
+            <a href="xksz/xksz01/index.htm">学科建设</a>　|　<a href="xksz/xksz02/index.htm">人才名录</a>　|　<a
+                href="xksz/xksz03/index.htm">名师垂范</a>
+        </div>
+        <div id="subnav5" class="hidecontent">
+            <a href="jyjx/jyjx01/index.htm">本科教育</a>　|　<a href="jyjx/jyjx02/index.htm">研究生教育</a>　|　<a
+                href="jyjx/jyjx03/index.htm">国际教育</a>　|　<a href="jyjx/jyjx04/index.htm">继续教育</a>
+        </div>
+        <div id="subnav6" class="hidecontent">
+            <a href="kxyj/kxyj01/index.htm">重点研究机构</a>　|　<a href="kxyj/kxyj04/index.htm">学术期刊</a>　|　<a
+                href="kxyj/kxyj05/index.htm">博士后科研流动站</a>
+        </div>
+        <div id="subnav7" class="hidecontent">
+            <a href="zsjy/zsjy01/index.htm">本科招生</a>　|　<a href="zsjy/zsjy02/index.htm">研究生招生</a>　|　<a
+                href="zsjy/zsjy03/index.htm">留学生招生</a>　|　<a
+                href="http://www.sysu.edu.cn/2012/cn/jyjx/jyjx04/index.htm">继续教育招生</a>　|　<a
+                href="zsjy/zsjy04/index.htm">就业指导与服务</a>
+        </div>
+        <div id="subnav8" class="hidecontent">
+        </div>
+        <div id="subnav9" class="hidecontent">
+        </div>
+        <div id="subnav10" class="hidecontent">
+        </div>
+        <div id="subnav11" class="hidecontent">
+            <a href="http://myspace.sysu.edu.cn">5D空间</a>　|　<a href="zjzd/zjzd02/index.htm">校区地图</a>　|　<a
+                href="zjzd/zjzd03/index.htm">生活服务</a>　|　<a href="zjzd/zjzd04/index.htm">中大博物馆</a>　|　<a
+                href="zjzd/zjzd05/index.htm">校园文化</a>
+        </div>
+    </div>
+    <!--subnav end-->
+
+    <div id="main">
+        <div id="mainbody">
+            <div id="indexline">
+                <div id="box">
+                    <img src="./images/sunyatsen.jpg" alt="广州南校区" width="228" height="300">
+                </div>
+                <div id="content_main">
+                    <a href="zdgk/zdgk08/tuzwq/tuzwq2015/tu201503/index.htm" target="_blank" title="蝶之绘">
+                        <img src="images/20150609120804225363.jpg" alt="[ 查看:蝶之绘 ]">
+                    </a>
+                </div>
+            </div>
+            <!-- indexline end -->
+
+            <div class="cols">
+                <div class="colsleft">
+                    <div class="cols01">
+                        <div class="channel_shadow">
+                            <div class="channel">
+                                <h3><span class="newsmore"><a href="http://news2.sysu.edu.cn">进入&gt;&gt;</a></span><span
+                                        id="sysunews01" class=""
+                                        onmouseover="switchNews('sysunews01','newslist01');this.blur();">中大新闻</span>
+                                    <span id="sysunews02" class="newsdown"
+                                        onmouseover="switchNews('sysunews02','newslist02');this.blur();"
+                                        onclick="location.href='../en/news/index.htm';">NEWS &amp; EVENTS</span></h3>
+                                <div id="newslist01" class="">
+                                    <iframe id="ifzdxw" src="http://news2.sysu.edu.cn/news01/mainsysunews.htm?new=60717"
+                                        frameborder="0" scrolling="no" height="252" width="356"
+                                        noresize="noresize"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="channel_shadow">
+                            <div class="channel">
+                                <h3><span class="newsmore"><a
+                                            href="http://news2.sysu.edu.cn/news03/index.htm">更多&gt;&gt;</a></span>媒体中大
+                                </h3>
+                                <iframe id="ifmtzd" src="http://news2.sysu.edu.cn/news03/mainsysunews2.htm?new=60717"
+                                    frameborder="0" scrolling="no" height="196" width="356"
+                                    noresize="noresize"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cols01">
+                        <div class="channel_shadow">
+                            <div class="channel">
+                                <h3><span id="sysunews03" class="newsdown"
+                                        onmouseover="switchMeiti('sysunews03','newslist03');this.blur();">学术预告</span>
+                                    <span id="sysunews04" class=""
+                                        onmouseover="switchMeiti('sysunews04','newslist04');this.blur();"
+                                        onclick="location.href='../en/announcements/index.htm';">ACADEMIC
+                                        ANNOUNCEMENTS</span> </h3>
+                                <div id="newslist03">
+                                    <ul id="xsyg01">
+                                        <li><span class="newstime">11-18</span><a
+                                                href="http://ecampus.sysu.edu.cn:80/zsuoa/info/infoShowAction.do?method=getInformation&amp;id=8a908002510dbb440151183e37821751"
+                                                target="_blank"
+                                                title="医学前沿学术报告第238期—尾神经电刺激在慢性脊髓损伤大鼠运动功能恢复中的作用和机制">医学前沿学术报告第238期—尾神经电...</a>
+                                        </li>
+                                        <li><span class="newstime">11-17</span><a
+                                                href="http://ecampus.sysu.edu.cn:80/zsuoa/info/infoShowAction.do?method=getInformation&amp;id=8a908002510dbb44015114759e281331"
+                                                target="_blank"
+                                                title="讲座题目：Repair in Foreign Language Teaching in Its Real Sense">讲座题目：Repair
+                                                in For...</a></li>
+                                        <li><span class="newstime">11-17</span><a
+                                                href="http://ecampus.sysu.edu.cn:80/zsuoa/info/infoShowAction.do?method=getInformation&amp;id=8a908002510dbb4401511464e05312c2"
+                                                target="_blank" title="心理语言学讲座：神经可塑性与二语习得">心理语言学讲座：神经可塑性与二语习得</a></li>
+                                        <li><span class="newstime">11-16</span><a
+                                                href="http://ecampus.sysu.edu.cn:80/zsuoa/info/infoShowAction.do?method=getInformation&amp;id=8a908002510dbb4401510faf3676091a"
+                                                target="_blank" title="讲座题目：思维模式对语言结构的影响">讲座题目：思维模式对语言结构的影响</a></li>
+                                        <li><span class="newstime">11-16</span><a
+                                                href="http://ecampus.sysu.edu.cn:80/zsuoa/info/infoShowAction.do?method=getInformation&amp;id=8a908002510dbb4401510ddc34aa00ca"
+                                                target="_blank"
+                                                title="药学前沿大讲堂第236讲：开发调节自唑活性、治疗慢性病的药物：小分子、生物药和中药复方">药学前沿大讲堂第236讲：开发调节自...</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="channel_shadow">
+                            <div class="channel">
+                                <h3>重要通知</h3>
+                                <ul id="zytz01">
+                                    <li><span class="newstime">11-10</span><a
+                                            href="http://ecampus.sysu.edu.cn:80/zsuoa/info/infoShowAction.do?method=getInformation&amp;id=8a90800250f073540150f07a47c40018"
+                                            target="_blank" title="中山大学关于征集学位证书设计方案的通知">[研究生院]中山大学关于征集学位证书设计方案...</a>
+                                    </li>
+                                    <li><span class="newstime">11-16</span><a
+                                            href="http://ecampus.sysu.edu.cn:80/zsuoa/info/infoShowAction.do?method=getInformation&amp;id=8a908002510dbb4401510f1d331e06b2"
+                                            target="_blank" title="总务处关于南校区部分区域停电的通知">[总务]总务处关于南校区部分区域停电的通...</a></li>
+                                    <li><span class="newstime">11-16</span><a
+                                            href="http://ecampus.sysu.edu.cn:80/zsuoa/info/infoShowAction.do?method=getInformation&amp;id=8a908002510dbb4401510e7617190571"
+                                            target="_blank" title="关于中山大学2015年体育节延期的通知">[教育学院]关于中山大学2015年体育节延期...</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="channel_shadow">
+                            <div class="channel">
+                                <h3>中大校报</h3>
+                                <iframe src="https://www.baidu.com/" frameborder="0" scrolling="no" height="112"
+                                    width="356" noresize="noresize"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="channel gonggao">
+                        <h3><span class="newsmore"><a href="sysunotice/index.htm">更多&gt;&gt;</a></span>公告</h3>
+                        <p class="commontext">
+                            <a href="sysunotice/23991.htm">中山大学面向全球公开招聘学院（系）院长（系主任）和学科带头人公告</a>　|　<a
+                                href="sysunotice/23500.htm">首届中山大学国际青年学者珠海论坛</a>　|　<a href="sysunotice/23089.htm">Top
+                                Job Openings: Professors, Department Chairs and School Deans</a>　|　<a
+                                href="sysunotice/19091.htm">关于对“中大播音”培训机构发布虚假信息的声明</a>　|
+                        </p>
+                    </div>
+                </div>
+                <!-- colsleft end -->
+                <div class="cols02">
+                    <div class="channel">
+                        <h4>用户信息导航</h4>
+                        <div class="commonline">
+                            <p class="daohang">
+                                <a href="http://my.sysu.edu.cn" target="_blank">
+                                    <img src="images/mysysu.jpg" border="0"></a><br>
+                                <a href="info/info01/index.htm">学生</a> | <a href="info/info02/index.htm">教职工</a> | <a
+                                    href="info/info03/index.htm">校友</a> | <a href="info/info04/index.htm">考生及访客</a>
+                            </p>
+                        </div>
+                        <h4><span class="newsmore"><a
+                                    href="http://news2.sysu.edu.cn/theory02/">更多&gt;&gt;</a></span>高教动态</h4>
+                        <iframe src="https://www.baidu.com/" frameborder="0" scrolling="no" height="300" width="270"
+                            noresize="noresize"></iframe>
+                        <h4>专题</h4>
+                        <div class="commonline">
+                            <p style="text-align: center; padding: 10px 0px; border: 0px;">
+                                <a href="http://news2.sysu.edu.cn/ztbd/ztbd23/index.htm" target="_blank">
+                                    <img src="images/20151014164835880525.jpg" border="0"></a>
+                            </p>
+                        </div>
+                        <div class="weibo">
+                            <a href="http://weibo.com/u/1892723783">
+                                <img src="images/sina.jpg" border="0" title="中大新浪微博"></a><a
+                                href="http://t.qq.com/sysuuniversity"><img src="images/tencent.jpg" border="0"
+                                    title="中大腾讯微博"></a><a href="http://t.people.com.cn/sysu1924"><img
+                                    src="images/renmin.jpg" border="0" title="人民微博"></a><a
+                                href="http://myspace.sysu.edu.cn"><img src="images/ql_5d.jpg" border="0"
+                                    title="5D空间"></a> <a href="http://helpdesk.sysu.edu.cn/">
+                                <img src="images/ql_helpdesk.jpg" border="0" title="帮助台"></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- cols2 end -->
+            </div>
+            <!-- cols end -->
+        </div>
+        <!--mainbody end-->
+
+        <div id="quicklinks">
+            <a href="http://iforum.sysu.edu.cn/index.php?gid=15" target="_blank"><span class="spe" id="linksnav7"
+                    onmouseover="switchQuicklink('linksnav7','sublinks7');this.blur();">校务直通车</span></a>
+            <a href="#"><span class="spe" id="linksnav1"
+                    onmouseover="switchQuicklink('linksnav1','sublinks1');this.blur();">在线学习</span></a>
+            <a href="#"><span class="spe" id="linksnav2"
+                    onmouseover="switchQuicklink('linksnav2','sublinks2');this.blur();">专题网站</span></a>
+            <a href="#"><span class="spe" id="linksnav3"
+                    onmouseover="switchQuicklink('linksnav3','sublinks3');this.blur();">独立学院</span></a>
+            <a href="#" target="_blank"><span class="spe" id="linksnav4"
+                    onmouseover="switchQuicklink('linksnav4','sublinks4');this.blur();">招标与竞价</span></a>
+            <a href="http://xxgk.sysu.edu.cn" target="_blank"><span class="spe" id="linksnav5"
+                    onmouseover="switchQuicklink('linksnav5','sublinks5');this.blur();">信息公开网</span></a>
+            <a href="http://ceat.sysu.edu.cn" target="_blank"><span class="spe" id="linksnav6"
+                    onmouseover="switchQuicklink('linksnav6','sublinks6');this.blur();">中组部干训基地</span></a>
+            <a href="http://admission.sysu.edu.cn" target="_blank"><span class="spe" id="linksnav8"
+                    onmouseover="switchQuicklink('linksnav8','sublinks8');this.blur();">本科招生网</span></a>
+            <a href="http://ceremony.sysu.edu.cn" target="_blank"><span class="spe" id="linksnav9"
+                    onmouseover="switchQuicklink('linksnav9','sublinks9');this.blur();">学位授予仪式</span></a>
+
+        </div>
+        <!--quicklinks end-->
+
+        <div id="sublinks">
+            <div id="sublinks1" class="hidecontent">
+                <a href="http://gxpx1.ceat.edu.cn/index.php" target="_blank">干部在线学习中心</a>
+                | <a href="http://jpkc.ne.sysu.edu.cn/kfkc/" target="_blank">数字化学习开放资源</a>
+                | <a href="http://lecture.sysu.edu.cn" target="_blank">逸仙网络大讲堂</a>
+                | <a href="http://elearning.sysu.edu.cn" target="_blank">数字化课程中心</a>
+                | <a href="http://study.sysu.edu.cn " target="_blank">博学网</a>
+                | <a href="http://jpkc.ne.sysu.edu.cn/" target="_blank">网络教育精品课程</a>
+            </div>
+            <div id="sublinks2" class="hidecontent">
+                <a href="http://home3.sysu.edu.cn/sysuvi" target="_blank">视觉形象识别系统手册</a>
+                | <a href="http://bkzlgc.sysu.edu.cn/" target="_blank">本科教学质量与教学改革工程网</a>
+                | <a href="http://ceremony.sysu.edu.cn" target="_blank">学位授予仪式</a>
+                | <a href="http://kyy.sysu.edu.cn/xuefeng/" target="_blank">学风建设专栏</a>
+                | <a href="http://eao.sysu.edu.cn/zwhzxm/index.htm" target="_blank">中外合作办学专栏</a>
+                | <a href="http://syss.sysu.edu.cn" target="_blank">三严三实</a>
+                | <a href="http://dhq.sysu.edu.cn" target="_blank">大后勤服务</a>
+                | <a href="http://news2.sysu.edu.cn/ztbd/ztbd18_20150309153009747245_20150313165127941088/index.htm"
+                    target="_blank">春季工作会议</a>
+            </div>
+            <div id="sublinks3" class="hidecontent" style="margin-left: 250px;">
+                <a href="http://www.xhsysu.cn" target="_blank">新华学院</a>
+
+
+                | <a href="http://www.nfsysu.cn/" target="_blank">南方学院</a>
+
+
+            </div>
+            <div id="sublinks4" class="hidecontent" style="margin-left: 340px;">
+                <a href="http://bidding.sysu.edu.cn/" target="_blank">招标采购</a>
+                | <a href="http://wsjj.sysu.edu.cn" target="_blank">网上竞价</a>
+
+            </div>
+            <div id="sublinks5" class="hidecontent"></div>
+            <div id="sublinks6" class="hidecontent"></div>
+            <div id="sublinks7" class="hidecontent"></div>
+            <div id="sublinks8" class="hidecontent"></div>
+            <div id="sublinks9" class="hidecontent"></div>
+        </div>
+        <!--sublinks end-->
+    </div>
+    <!--main end-->
+
+    <div id="footer">
+        <div class="bottomlogo">
+            <img src="images/logo-bottom.jpg"></div>
+        <div class="bottomcontact_cn">通讯地址:广州市新港西路135号 邮编:510275<br>
+            电话: 020-84112828</div>
+        <div class="bottomcontact_en">
+            Address: No. 135, Xingang Xi Road, Guangzhou, 510275, P. R. China<br>
+            TEL: +86-20-84112828
+        </div>
+        <div class="clear"></div>
+        <div class="copyright">中山大学版权所有 COPYRIGHT©1999-2013 , SUN YAT-SEN UNIVERSITY - <a href="#">联系我们</a> - <a
+                href="#">网站地图</a> - <a href="#">粤ICP备05008892号</a></div>
+    </div>
+    <!--footer end-->
+
+</body>
+
+</html>

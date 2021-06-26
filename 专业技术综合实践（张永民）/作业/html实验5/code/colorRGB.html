@@ -1,0 +1,184 @@
+<!DOCTYPE HTML>
+<html>
+<body>
+    <style>
+        input[type="text"] {
+            width: 2.5em;
+        }
+
+        #test {
+            border: solid 1px black;
+            width: 80px;
+            height: 80px;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: rgba(128,128,128,0.2);
+            border-radius: 40px/40px;
+            z-index: 1;
+        }
+
+        #exercise {
+            margin: 20px;
+            max-width: 540px;
+            min-width: 240px;
+        }
+
+        p {
+            text-indent: 2em;
+        }
+
+        #container {
+            position: relative;
+            max-width: 550px;
+            min-width: 250px;
+            margin: 10px auto;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        span.title {
+            display: inline-block;
+            width: 10em;
+            text-align: left;
+        }
+        input[type="range"] {
+            width: 200px;
+        }
+
+        p {
+            margin-top: 10px;
+            margin-bottom: 5px;
+        }
+    </style>
+    <script>
+        var width = 540;
+        var height = 200;
+        var x = 0;
+        var y = 0;
+        var dx = 1;
+        var dy = 1;
+        function changeSlider(ind) {
+            var dest = document.getElementById("txt" + ind);
+            var src = document.getElementById("slider" + ind);
+            dest.value = src.value / ((ind == 4) ? 100 : 1);
+
+            var red = document.getElementById("slider1").value;
+            var green = document.getElementById("slider2").value;
+            var blue = document.getElementById("slider3").value;
+            var alpha = document.getElementById("slider4").value / 100;
+            var box = document.getElementById("test");
+            var show1 = document.getElementById("color2");
+            show1.innerHTML = "rgba(" + red + "," + green + "," + blue + "," + alpha + ")";
+            var show2 = document.getElementById("color1");
+            show2.innerHTML = ("#" + toStr16(parseInt(red, 10)) + toStr16(parseInt(green, 10)) + toStr16(parseInt(blue, 10))).toUpperCase();
+            box.style.backgroundColor = show1.innerHTML;
+            var show3 = document.getElementById("color3");
+            var hsl = rgbToHsl(red / 255, green / 255, blue/255);
+            show3.innerHTML = "hsla(" + Math.round(hsl[0] * 360) + "," + Math.round(hsl[1] * 100) + "," + Math.round(hsl[2] * 100) + "," + alpha + ")";
+        };
+
+        function toStr16(val) {
+            if (val >= 16)
+                return val.toString(16);
+            else
+                return "0"+val.toString(16);
+        }
+
+        function rgbToHsl(r, g, b) {
+            r /= 255, g /= 255, b /= 255;
+            var max = Math.max(r, g, b), min = Math.min(r, g, b);
+            var h, s, l = (max + min) / 2;
+            if (max == min) {
+                h = s = 0; // achromatic 
+            } else {
+                var d = max - min;
+                s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+                switch (max) {
+                    case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+                    case g: h = (b - r) / d + 2; break;
+                    case b: h = (r - g) / d + 4; break;
+                } h /= 6;
+            } return [h, s, l];
+        };
+
+        setTimeout(function () {
+            var box = document.getElementById("test");
+            x = x + dx;
+            y = y + dy;
+            if (x > width - 40) {
+                dx = -1;
+                x = width - 40;
+            }
+            if (y > height - 40) {
+                dy = -1;
+                y = height - 40;
+            }
+            if (x < 0) {
+                dx = 1;
+                x = 0;
+            }
+            if (y < 0) {
+                dy = 1;
+                y = 0;
+            }
+            box.style.left = "" + x + "px";
+            box.style.top = "" + y + "px";
+
+            setTimeout(arguments.callee, 50);
+        }, 50);
+        window.onresize = function () {
+            var div = document.getElementById('exercise');
+            height = div.clientHeight;
+            width = div.clientWidth;
+        }
+        window.onload = function () {
+            var div = document.getElementById('exercise');
+            height = div.clientHeight;
+            width = div.clientWidth;
+        }
+    </script>
+
+    <div id="container">
+        <h1>练习英文打字的句子</h1>
+        <div id="exercise">
+            <p>
+                “The quick brown fox jumps over a lazy dog.”的中文翻译是“快速的棕色狐狸跳过一条懒狗.”。请注意，英文的这个句子只使用了32个字母，却将英文26个字母完全包括了。
+          这个句子还易于记忆，是英文打字练习用得最多的句子。
+            </p>
+            <p>
+                另外还有一个句子，也只用了32个字母，只是普遍性远不如第一句。这个句子是： Pack my box with five dozen liquor jugs. (将五打酒瓶装在我的箱子里。) 其实，
+           完全包含英文26个字母，却比上述两句更简短的句子仍有不少，像下述的句子就只动用了31个字母：The five boxing wizards jump quickly. (五个打拳的男巫快速跳动。)
+            </p>
+            <p>
+                如果你还想用更少的字母写这种句子，恐怕就非得动用专有字词不可了。像下述的句子就只用了29个字母： Quick wafting zephyrs vex bold Jim. (疾风使勇敢的吉姆不知所措。)
+           另外一句更短，只用了28个字母： Waltz nymph，for quickj igs vex Bud.(女神轻快的华尔滋舞步激怒了巴德。)
+            </p>
+            <p>
+                最后一句更称得上压轴之作，只用了26个字母。可惜却包含两个专有名词，而且还是含有缩写字母的专有名词，投机之嫌大大地减低了它的奥妙。这个句子是：J.Q.Schwartz flung D.V.Pike my box.(J.Q.Schwartz用我的箱子摔D.V.Pike。)
+          　据说，如果有人能动用英文26个字母，一个都不重复，写成一个不包含任何专有名词的句子，《吉尼斯世界纪录大全》将会把他的大名收录在内。
+            </p>
+        </div>
+        <div id="test">
+        </div>
+        <p><span class="title">Red:</span><input type="range" id="slider1" min="0" max="255" value="128" onchange="changeSlider(1)" />&nbsp;&nbsp;<input type="text" id="txt1" readonly="readonly" value="128" onchange="" /></p>
+        <p><span class="title">Green:</span><input type="range" id="slider2" min="0" max="255" value="128" onchange="changeSlider(2)" />&nbsp;&nbsp;<input type="text" id="txt2" readonly="readonly" value="128" onchange="" /></p>
+        <p><span class="title">Blue:</span><input type="range" id="slider3" min="0" max="255" value="128" onchange="changeSlider(3)" />&nbsp;&nbsp;<input type="text" id="txt3" readonly="readonly" value="128" onchange="" /></p>
+        <p><span class="title">Alpha:</span><input type="range" id="slider4" min="0" max="100" value="20" onchange="changeSlider(4)" />&nbsp;&nbsp;<input type="text" id="txt4" readonly="readonly" value="0.2" onchange="" /></p>
+        <p><span class="title">CSS value1:</span><span id="color1">#80808033</span></p>
+        <p><span class="title">CSS value2:</span><span id="color2">rgb(128,128,128,1)</span></p>
+        <p><span class="title">CSS value3:</span><span id="color3">hsla(0,0,0,0.2)</span></p>
+    </div>
+    <div style="">
+        <h1>王国维</h1>
+            <p>
+    语言大师王力曾这样描述王国维：“留着辫子，戴着白色棉布瓜皮小帽，穿长袍，勒一条粗布腰带，一个典型的冬烘先生的模样。”鲁迅先生亦曰：“要谈国学，王国维才算一个研究国学的人物。”同时他又恨铁不成钢地说：“老实得像火腿一样。”
+            </p>
+    <p>然而，就是这样的一位“冬烘先生”，却在短短的二十余年时间里，先后在哲学、史学、美学、文学、伦理学、文字学、考古学、心理学、词学、曲学、红学、金石学等多个学科领域取得一流的成就，一举奠定了中国现代学术的基石，成为中国乃至东亚的顶级学术大师。王国维生来就是做学问的料。他天性忧郁，羸弱多病，少时即沉湎书海。早年留学日本时，一天到晚都在看书、写东西，最要命的是随地吐痰。他的屋子里除了书，什么也没有。一次，朋友要借便所一用，他大方地指着园子说：“请便。”</p>
+    <p>清朝灭亡后，全中国仅剩下两根著名辫子，一根在北大，一根在清华。北大的是辜鸿铭，清华的是王国维。清廷在的时候，王国维曾将辫子剪去，但清廷亡后，王国维却将辫子留了起来，而且是永远地留着。一次，夫人替他梳辫子时问他：“都这时候了，你还留这东西做什么？”王国维一本正经地作答：“正是到了这时候了，我还剪它做什么？”</p>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+1.
+CREATE VIEW VIEWC
+(no, sid, tid, cid, cname, score)
+AS SELECT no, sid, tid, CHOICES.cid, cname, score
+FROM CHOICES, COURSES
+WHERE CHOICES.cid = COURSES.cid
+
+2.
+CREATE VIEW VIEWS
+(no, sid, sname, tid, cid,  score)
+AS SELECT no, CHOICES.sid, sname, tid, cid, score
+FROM CHOICES, STUDENTS
+WHERE CHOICES.sid = STUDENTS.sid
+
+3.
+CREATE VIEW S1
+(SID, SNAME, GRADE)
+AS SELECT sid, sname, grade
+FROM STUDENTS
+WHERE GRADE > 1998
+
+4.
+SELECT no, sid, tid, cid, score
+FROM VIEWS
+WHERE sname = 'uxjof'
+
+5.
+SELECT sid, score
+FROM VIEWC
+WHERE cname = 'UML'
+
+6.
+INSERT
+INTO S1
+VALUES('60000001', 'Lily', 2001)
+
+7.
+--删除原来的视图
+DROP VIEW S1
+
+--新建有约束的视图
+CREATE VIEW S1
+(SID, SNAME, GRADE)
+AS SELECT sid, sname, grade
+FROM STUDENTS
+WHERE GRADE > 1998
+WITH CHECK OPTION
+
+--删除第六题插入的记录
+DELETE 
+FROM STUDENTS
+WHERE sid = '60000001'
+
+--插入失败
+INSERT
+INTO S1
+VALUES('60000001', 'Lily', 1997)
+
+--删除失败
+DELETE S1
+WHERE grade = 1999
+
+插入失败的原因：因为插入的实例的grade=1997，不满足视图S1定义的"grade>1998"的条件，所以插入失败。
+删除失败的原因：因为删除视图的实例，也会删除基表的实例，视图S1的基表是STUDENTS，而STUDENTS的sid是CHOICES的外码，所以删除外码一定会出错，如果想删除成功，要先从CHOICES中删除相应的sid的实例，然后才可以删除视图中的实例。
+
+8.
+UPDATE VIEWS
+SET score = score + 5
+WHERE sname = 'uxjof'
+
+9.
+DROP VIEW S1
+DROP VIEW VIEWC
+DROP VIEW VIEWS

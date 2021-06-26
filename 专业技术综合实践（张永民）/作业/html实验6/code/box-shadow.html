@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>box shadow</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: seagreen;
+        }
+
+        html {
+            font-size: 16px;
+        }
+
+        #box1 {
+            width: 36rem;
+            height: 10rem;
+            margin: 0 auto;
+            padding: 1rem;
+            background: linear-gradient(to bottom, rgb(240, 240, 240) 0%, white 10%, white 100%);
+            box-shadow: inset 0px -2px 1px rgba(0, 0, 0, 0.5), 1px 2px 1px rgba(0, 0, 0, 0.5), inset 1px 1px 2px white, 0px 0px 1px black;
+            border-radius: 2%;
+            position: relative;
+        }
+
+        #box2 {
+            height: 100%;
+            width: 100%;
+            background: white;
+            box-shadow: inset 0px 2px 1px rgba(0, 0, 0, 0.1), inset 0px -1px 1px rgba(0, 0, 0, 0.5), inset 0px 1px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 2%;
+        }
+
+        #box3 {
+            width: 6rem;
+            height: 6rem;
+            margin: 0 auto;
+            padding: 0.5rem;
+            background: white;
+            box-shadow: inset 0px -2px 1px rgba(0, 0, 0, 0.5), 1px 2px 1px rgba(0, 0, 0, 0.5), inset 1px 1px 2px white, 0px 0px 1px black;
+            border-radius: 50%;
+            position: absolute;
+            top: 2rem;
+            right: 3.5rem;
+            z-index: 2;
+        }
+
+        #box4 {
+            height: 100%;
+            width: 100%;
+            background: linear-gradient(to bottom, rgb(82, 207, 235), rgb(66, 162, 188));
+            box-shadow: inset 0px 1px 5px rgba(255, 255, 255, 0.2);
+            background-color: white;
+            border-radius: 50%;
+            transition-property: background-color;
+            transition-duration: 0.3s;
+            transition-timing-function: ease-out;
+        }
+
+        #box4:hover {
+            background: rgb(82, 207, 235);
+            cursor: pointer;
+        }
+
+        #box4:active {
+            box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.3), inset 0px 3px 4px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box1">
+        <div id="box2">
+        </div>
+    </div>
+    <br>
+    <div id="box3">
+        <div id="box4">
+        </div>
+    </div>
+</body>
+
+</html>

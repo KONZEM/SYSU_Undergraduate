@@ -1,0 +1,22 @@
+
+        #quicklinks {
+            padding: 12px 0px 7px 0px;
+            margin: 0px auto;
+            word-spacing: 5px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #000000;
+            background: #D1D1D1;
+            width: 998px;
+            height: 20px;
+        }
+
+        #quicklinks a:active, #quicklinks a:link, #quicklinks a:visited, #quicklinks a:hover {
+                color: #333333;
+                text-decoration: none;
+        }
+
+        #quicklinks .spe {
+                padding: 8px 15px 10px 15px;
+                margin: 0px;
+        }

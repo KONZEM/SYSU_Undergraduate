@@ -1,0 +1,56 @@
+1.
+select * 
+from COURSES
+
+2.
+select distinct sid
+from CHOICES
+
+3.
+select cid
+from COURSES
+where hour < 88
+
+4.
+select sid
+from CHOICES
+group by sid
+having SUM(score) > 400
+
+5.
+select COUNT(*) as count
+from COURSES
+
+6.
+select cid, COUNT(*) as count
+from CHOICES
+group by cid
+
+7.
+select sid
+from CHOICES
+where score > 60
+group by sid
+having COUNT(*) > 2
+
+8.
+select sid, COUNT(*), AVG(score) as average
+from CHOICES
+group by sid
+
+9.
+select STUDENTS.sid, STUDENTS.sname 
+from CHOICES, COURSES, STUDENTS
+where CHOICES.cid = COURSES.cid and COURSES.cname = 'java' and CHOICES.sid = STUDENTS.sid
+
+10.
+select CHOICES.cid, CHOICES.score
+from CHOICES, STUDENTS
+where CHOICES.sid = STUDENTS.sid and STUDENTS.sname = 'sshne'
+
+11.
+select R.cname
+from COURSES as R, COURSES as T
+where R.hour > T.hour and T.cname = 'C++'
+
+

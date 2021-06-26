@@ -1,0 +1,15 @@
+#nav a:active, #nav a:link, #nav a:visited {
+    color: #FFF;
+    text-decoration: none;
+}
+
+#nav .home {
+    padding: 8px 10px 5px 15px;
+    margin: 0px;
+    background: url(../images/home.gif) center no-repeat;
+}
+
+#nav .sp {
+    padding: 10px 12px 10px 17px;
+    background: url(../images/nav-spe.jpg) no-repeat left;
+}

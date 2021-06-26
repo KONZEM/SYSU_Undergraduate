@@ -1,0 +1,8 @@
+apiVersion: kubescheduler.config.k8s.io/v1alpha1
+kind: KubeSchedulerConfiguration
+clientConnection:
+  kubeconfig: "/etc/kubernetes/scheduler.conf"
+algorithmSource:
+  policy:
+    file:
+      path: "/etc/kubernetes/scheduler-extender-policy.yaml"

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>计时器</title>
+    <style>
+        .time {
+            display: inline-block;
+            width: 3.6em;
+            text-align: right;
+            margin-right: 4px
+        }
+        #container,
+        h1 {
+            width: 20em;
+            margin: 10px auto;
+            text-align: center
+        }
+        .timer {
+            margin-top: 20px
+        }
+        .pressed {
+            background: yellow
+        }
+    </style>
+    <script>
+        function Timer() {
+            Timer.prototype.start_func = function() {
+                // alert(this);
+                if(this.pause) {
+                    this.start = true;
+                    this.pause = false;
+                    this.start_time = (new Date).getTime();
+                    this.timer.childNodes[7].style.backgroundColor = "white";
+                }
+                else if(this.stop) {
+                    this.start = true;
+                    this.stop = false;
+                    this.start_time = (new Date).getTime();
+                    this.timer.childNodes[5].style.backgroundColor = "white";
+                }
+                this.timer.childNodes[1].childNodes[0].nodeValue = (((new Date).getTime() - this.start_time) / 1000.00 + this.pass_time).toFixed(2);
+                this.timer.childNodes[3].style.backgroundColor = "yellow";
+                this.tid = setTimeout( this.start_func.bind(this), 10);
+            }
+            Timer.prototype.pause_func = function() {
+                if (this.start) {
+                    this.start = false;
+                    this.pause = true;
+                    clearTimeout(this.tid);
+                    this.pass_time = Number(this.timer.childNodes[1].childNodes[0].nodeValue);
+                    this.timer.childNodes[3].style.backgroundColor = "white";
+                    this.timer.childNodes[7].style.backgroundColor = "yellow";
+                }
+            }
+            Timer.prototype.stop_func = function() {
+                if (this.start) {
+                    this.start = false;
+                    this.stop = true;
+                    clearTimeout(this.tid);
+                    this.timer.childNodes[3].style.backgroundColor = "white";
+                    this.timer.childNodes[5].style.backgroundColor = "yellow";
+                }
+            }
+        }
+        function addTimer() {
+            try{
+                let t = new Timer();
+                t.start = true;
+                t.pause = false;
+                t.stop = false;
+                t.start_time = (new Date).getTime();
+                t.pass_time = 0;
+
+                t.timer = document.getElementById("container").childNodes[3].cloneNode(true);
+                t.timer.style.display = "block";
+                document.getElementById("container").appendChild(t.timer);
+
+                t.tid = 0;
+                t.start_func();
+
+                t.timer.childNodes[3].addEventListener("click", t.start_func.bind(t));
+                t.timer.childNodes[5].addEventListener("click", t.stop_func.bind(t));
+                t.timer.childNodes[7].addEventListener("click", t.pause_func.bind(t));
+            }catch(e) {alert(e);}
+        }
+    </script>
+</head>
+
+<body>
+    <h1>计时器</h1>
+    <div id="container">
+        <input type="button" class="add" value="增加计时器(秒表)" onclick="addTimer()">
+        <div class="timer s0" style="display: none">
+            <span class="time">0.00</span>
+            <input type="button" class="start pressed" value="启动">
+            <input type="button" class="stop" value="停止">
+            <input type="button" class="pause" value="暂停">
+        </div>
+    </div>
+    <script>
+        // var test = document.getElementById("container").childNodes[3];
+        // alert(typeof test.childNodes[1].childNodes[0].nodeValue);
+        // alert(test);
+        // for(var i=0; i<test.childNodes.length; ++i) alert(i + " " +test.childNodes[i]);
+        // function Timer() {
+        //     var that = this;
+        //     Timer.prototype.test = function() {
+        //         // that.num.childNodes[1].childNodes[0].nodeValue = (new Date).getTime() - that.init;
+        //         // setTimeout(that.test, 1000);
+        //         // that.cnt += 1;
+        //         alert(that.cnt);
+        //     }
+        // }
+        // var t = new Timer();
+        // t.num = document.getElementById("container").childNodes[3];
+        // t.cnt = 0;
+        // t.init = (new Date).getTime()
+        // t.test();
+        // var t2 = new Timer();
+        // t2.cnt = 2;
+        // t2.test();
+        // t.test();
+    </script>
+</body>
+</html>

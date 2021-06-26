@@ -1,0 +1,38 @@
+      .bottomlogo {
+            width: 160px;
+            height: 40px;
+            padding: 5px 10px;
+            border-right: #FFFFFF 1px solid;
+            float: left;
+        }
+
+        .bottomcontact_cn {
+            width: 260px;
+            height: 40px;
+            padding: 2px 20px 5px 20px;
+            line-height: 24px;
+            border-right: #FFFFFF 1px solid;
+            float: left;
+        }
+
+        .bottomcontact_en {
+            width: 400px;
+            height: 40px;
+            padding: 2px 20px 5px 20px;
+            line-height: 24px;
+            float: left;
+        }
+
+        .copyright {
+            padding: 10px;
+            margin: 0px;
+            color: #99BCA8;
+            font-size: 12px;
+            text-align: center;
+            word-spacing: 3px;
+        }
+
+            .copyright a:active, .copyright a:link, .copyright a:visited {
+                color: #99BCA8;
+                text-decoration: none;
+            }

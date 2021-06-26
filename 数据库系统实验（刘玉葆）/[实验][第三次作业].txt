@@ -1,0 +1,115 @@
+1.
+select STUDENTS.sid, STUDENTS.sname
+from STUDENTS, COURSES, CHOICES
+where STUDENTS.sid = CHOICES.sid and CHOICES.cid = COURSES.cid and COURSES.cname = 'C++' and CHOICES.score is not null and CHOICES.score > 
+(
+	select CHOICES.score
+	from STUDENTS, COURSES, CHOICES
+	where STUDENTS.sid = CHOICES.sid and CHOICES.cid = COURSES.cid and COURSES.cname = 'C++' and STUDENTS.sname = 'ZNKOO'
+)
+
+2.
+select sname
+from STUDENTS
+where grade in 
+(
+select grade
+from STUDENTS
+where sid = '883794999'
+)
+union all
+select sname
+from STUDENTS
+where grade in 
+(
+select grade
+from STUDENTS
+where sid = '850955252'
+)
+
+3.
+select sname
+from STUDENTS
+where sid not in
+(
+select sid
+from CHOICES join COURSES on CHOICES.cid = COURSES.cid
+where COURSES.cname = 'Java'
+)
+
+4.
+select *
+from COURSES
+where hour <= all
+(
+	select hour 
+	from COURSES
+	where hour is not null
+)
+
+5.
+select TEACHERS.tid, CHOICES.cid
+from TEACHERS join CHOICES on TEACHERS.tid = CHOICES.tid
+where TEACHERS.tid in
+(	
+	select tid
+	from TEACHERS
+	where salary >= all
+	(
+		select salary
+		from TEACHERS
+		where salary is not null
+	)
+)
+
+6.
+select sid
+from STUDENTS
+where sid in 
+(
+	select sid
+	from CHOICES join COURSES on CHOICES.cid = COURSES.cid
+	where COURSES.cname = 'ERP' and CHOICES.score is not null and CHOICES.score >= all
+	(
+		select score 
+		from CHOICES join COURSES on CHOICES.cid = COURSES.cid
+		where COURSES.cname = 'ERP' and score is not null
+	)
+)
+
+7.
+select distinct cname
+from COURSES
+where cid not in 
+(
+	select cid
+	from CHOICES
+)
+
+8.
+select distinct COURSES.cname
+from COURSES, CHOICES, TEACHERS
+where COURSES.cid = CHOICES.cid and CHOICES.tid = TEACHERS.tid and TEACHERS.tid in
+(
+	select TEACHERS.tid
+	from COURSES, CHOICES, TEACHERS
+	where COURSES.cid = CHOICES.cid and CHOICES.tid = TEACHERS.tid and COURSES.cname = 'UML'
+)
+
+9.
+select sid
+from CHOICES join COURSES on CHOICES.cid = COURSES.cid
+where COURSES.cname = 'database'
+intersect
+select sid 
+from CHOICES join COURSES on CHOICES.cid = COURSES.cid
+where COURSES.cname = 'UML'
+
+10.
+select sid
+from CHOICES join COURSES on CHOICES.cid = COURSES.cid
+where COURSES.cname = 'database'
+except
+select sid 
+from CHOICES join COURSES on CHOICES.cid = COURSES.cid
+where COURSES.cname = 'UML'

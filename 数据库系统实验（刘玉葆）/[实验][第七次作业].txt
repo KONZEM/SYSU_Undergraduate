@@ -1,0 +1,69 @@
+1.
+查询选修课程C++的学生的人数：
+SELECT COUNT(*)
+FROM CHOICES, COURSES
+WHERE CHOICES.cid=COURSES.cid AND cname='C++'
+结果：6031
+---------------------------------------------
+成绩合格的学生人数
+SELECT COUNT(*)
+FROM CHOICES, COURSES
+WHERE CHOICES.cid=COURSES.cid AND cname='C++' AND score >= 60
+结果：4817
+---------------------------------------------
+成绩不合格的学生人数
+SELECT COUNT(*)
+FROM CHOICES, COURSES
+WHERE CHOICES.cid=COURSES.cid AND cname='C++' AND score < 60
+结果：724
+---------------------------------------------
+在第一个查询中，COUNT(*)会把score=NULL的算上，但是在接下来的查询中，score=NULL都不会被算上，所以就导致了4817+724=5541!=6031,这就说明了有6031-5541=490个学生的score=NULL。
+
+2.
+SELECT sid, score
+FROM CHOICES, COURSES
+WHERE CHOICES.cid=COURSES.cid AND cname='C++'
+ORDER BY score ASC
+--------------------------------------------
+score取NULL的项会出现在结果中，出现的位置在最前面，即被当做最小值。
+
+3.
+SELECT DISTINCT score, sid
+FROM CHOICES, COURSES
+WHERE CHOICES.cid=COURSES.cid AND cname='C++'
+ORDER BY score ASC
+-------------------------------------------
+没有效果，因为sid都是不一样的，导致score=NULL的项不能归在相同取值的类中。
+
+4.
+SELECT grade
+FROM STUDENTS
+GROUP BY GRADE
+-------------------------------------------
+一共有15组，但其中有一组的grade=NULL，说明实际上只有14个年级。
+
+5.
+SELECT AVG(SCORE) AS 'avg_score', COUNT(score) AS 'number(exclude NULL)', COUNT(*) AS 'number(include NULL)', 
+MAX(SCORE) AS 'max_score', MIN(SCORE) AS 'min_score'
+FROM CHOICES
+GROUP BY cid
+-------------------------------------------
+通过COUNT(score)和COUNT(*)，我们可以看到两列的数字有时候是不一样的，因为该课程中可能有score=NULL的学生，而COUNT(score)是不会将score=NULL的学生算上，而COUNT(*)会把score=NULL的学生算上，并且AVG(SCORE)、MAX(SCORE)、MIN(SCORE)也是不会把score=NULL的学生算上的，因为除了COUNT(*)，其他集合函数都忽略去空值的项。
+
+6.
+SELECT DISTINCT S1.grade
+FROM STUDENTS AS S1
+WHERE S1.grade >= ALL(
+	SELECT S2.grade
+	FROM STUDENTS AS S2
+	WHERE S1.sid != S2.sid
+)
+------------------------------------------
+当存在grade取空值的时候，会出现查询结果为空的结果，因为任何数字与空值作比较都是False的，所以导致第一个WHERE条件永不满足，所以为了避免这种情况，应该使用下面的查询语句：
+SELECT DISTINCT S1.grade
+FROM STUDENTS AS S1
+WHERE S1.grade >= ALL(
+	SELECT S2.grade
+	FROM STUDENTS AS S2
+	WHERE S2.grade IS NOT NULL AND S1.sid != S2.sid
+)

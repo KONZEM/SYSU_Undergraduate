@@ -1,0 +1,210 @@
+﻿<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta content="text/html;charset=utf-8">
+    <title>第二中学</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-size: 12px;
+            font-family: 宋体;
+            line-height: 1.2em
+        }
+
+        a:link,
+        a:visited,
+        a:hover,
+        a:active {
+            text-decoration: none;
+        }
+
+        .wrapper {
+            margin: 0 auto;
+            width: 980px;
+            position: relative;
+        }
+
+        li {
+            list-style-type: none;
+            float: left;
+        }
+
+        #header_outer {
+            height: 140px;
+            background: url("images/header_bg.png") repeat-x;
+        }
+
+        #header {
+            overflow: hidden;
+        }
+
+        #nav_outer {
+            height: 60px;
+            background-image: linear-gradient(to bottom, #957137 50%, #6f4c1b 50%);
+        }
+
+        #nav {
+            position: relative;
+        }
+
+        #nav span,
+        #nav a {
+            font-size: 14px;
+            font-family: 'Microsoft YaHei';
+        }
+
+        #nav>li {
+            width: 140px;
+            height: 30px;
+            background-image: url('./images/nav_bg2.gif');
+            background-position-y: -64px;
+            transition: background-position-y;
+            transition-duration: 0.5s;
+        }
+
+        #nav>li>a {
+            width: 140px;
+            color: white;
+            font-weight: bold;
+            font-size: 2rem;
+            padding-left: 10px;
+        }
+
+        #nav>li:hover {
+            background-position-y: -32px;
+        }
+
+        #nav>li:hover .subnav {
+            visibility: visible
+        }
+
+        .subnav a,
+        .subnav span {
+            color: #f1c149;
+            margin: 12px;
+        }
+
+        #nav .subnav {
+            height: 26px;
+            width: 1160px;
+            position: absolute;
+            top: 30px;
+            left: -10px;
+            padding-top: 8px;
+            visibility: hidden;
+        }
+
+        #nav .subnav>li:hover a {
+            color: yellow;
+        }
+
+        #main_outer {
+            height: 500px;
+            background: url("./images/header_bg.png") repeat-x;
+            background-position: 0 -180px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="header_outer">
+        <div id="header" class="wrapper"></div>
+    </div>
+
+    <div id="nav_outer">
+        <ul class="wrapper" id="nav">
+            <li><a href="#" class="nav_hover">网站首页</a></li>
+            <li><a href="#">学校概况</a>
+                <ul class="subnav">
+                    <li><a href="#">学校简介</a></li>
+                    <li><span>|</span></li>
+                    <li><a href="#">校园风光</a></li>
+                    <li><span>|</span></li>
+                    <li><a href="#">学校领导</a></li>
+                    <li><span>|</span></li>
+                    <li><a href="#">组织机构</a></li>
+                    <li><span>|</span></li>
+                    <li><a href="#">校长信箱</a></li>
+                    <li><span>|</span></li>
+                    <li><a href="#">联系方式</a></li>
+                    <li><span>|</span></li>
+                    <li><a href="#">教师风采</a></li>
+                    <li><span>|</span></li>
+                    <li><a href="#">规章制度</a></li>
+                    <li><span>|</span></li>
+                    <li><a href="#">大事年记</a></li>
+                </ul>
+            </li>
+            <li><a href="#">校园动态</a>
+                <ul class="subnav">
+                    <li><a href="#">公示公告</a></li>
+                    <li><span>|</span></li>
+                    <li><a href="#">招生招聘</a></li>
+                    <li><span>|</span></li>
+                    <li><a href="#">校园新闻</a></li>
+                    <li><span>|</span></li>
+                    <li><a href="#">周程安排</a></li>
+                </ul>
+            </li>
+            <li><a href="#">教学科研</a>
+                <ul class="subnav">
+                    <li><a href="#">课例展示</a></li>
+                    <li><span>|</span></li>
+                    <li><a href="#">课程建设</a></li>
+                    <li><span>|</span></li>
+                    <li><a href="#">教学研究</a></li>
+                    <li><span>|</span></li>
+                    <li><a href="#">科技教育</a></li>
+                </ul>
+            </li>
+            <li><a href="#">德育树人</a>
+                <ul class="subnav">
+                    <li><a href="#">德育活动</a></li>
+                    <li><span>|</span></li>
+                    <li><a href="#">德育成果</a></li>
+                    <li><span>|</span></li>
+                    <li><a href="#">学子风采</a></li>
+                    <li><span>|</span></li>
+                    <li><a href="#">德育课程</a></li>
+                    <li><span>|</span></li>
+                    <li><a href="#">德育在线</a></li>
+                    <li><span>|</span></li>
+                    <li><a href="#">心灵空间</a></li>
+                </ul>
+            </li>
+            <li><a href="#">党群活动</a>
+                <ul class="subnav">
+                    <li><a href="#">机构设置</a></li>
+                    <li><span>|</span></li>
+                    <li><a href="#">党群动态</a></li>
+                    <li><span>|</span></li>
+                    <li><a href="#">党员先锋</a></li>
+                    <li><span>|</span></li>
+                    <li><a href="#">理论学习</a></li>
+                    <li><span>|</span></li>
+                    <li><a href="#">校务监督</a></li>
+                </ul>
+            </li>
+            <li><a href="#">校报校刊</a>
+                <ul class="subnav">
+                    <li><a href="#">二中人</a></li>
+                    <li><span>|</span></li>
+                    <li><a href="#">二中风采</a></li>
+                    <li><span>|</span></li>
+                    <li><a href="#">微博精选</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div id="main_outer">
+        <div class="wrapper" id="main">
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>

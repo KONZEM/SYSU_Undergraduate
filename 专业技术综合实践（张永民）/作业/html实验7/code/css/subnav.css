@@ -1,0 +1,36 @@
+#subnav a:active, #subnav a:link, #subnav a:visited {
+    color: #006600;
+    text-decoration: none;
+}
+
+.hidecontent {
+    display: none;
+}
+
+
+#subnav2 {
+    margin-left: 20px;
+}
+
+#subnav4 {
+    margin-left: 200px;
+}
+
+#subnav5 {
+    margin-left: 300px;
+}
+
+#subnav6 {
+    margin-left: 400px;
+}
+
+#subnav7 {
+    margin-left: 500px;
+}
+
+#subnav11 {
+    text-align: right;
+    margin-right: 20px;
+}
+
+

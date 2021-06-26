@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>text shadow</title>
+    <style>
+        html {
+            font-size: 16px;
+        }
+
+        div {
+            font-family: 微软雅黑;
+            background: linear-gradient(to right, #F00, #600 90%);
+            margin: 10px auto;
+            padding: 10px;
+            border-radius: 0.3333rem;
+            width: 60rem;
+            font-size: 4em;
+            font-weight: 900;
+        }
+
+        #box1 {
+            text-shadow: 1px 1px 1px rgb(200, 200, 200)
+        }
+
+        #box2 {
+            text-shadow: -1px -1px 1px rgb(100, 100, 100)
+        }
+
+        #box3 {
+            text-shadow: 5px 6px 10px rgb(20, 20, 20)
+        }
+
+        #box4 {
+            text-shadow: 1px 1px 1px rgb(100, 100, 100), 5px 6px 10px rgb(20, 20, 20)
+        }
+
+        #box5 {
+            text-shadow: 0px 0px 2px black, 0px 0px 2px #aaa, 0px 0px 4px #999, 0px 0px 6px #888, 0px 0px 8px #666, 0px 6px 6px rgba(0, 0, 0, 0.5), 0px 8px 20px rgba(0, 0, 0, 0.5)
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box0">
+        这是一行字！<br>
+        这是一行普通的字！
+    </div>
+    <div id="box1">
+        这是一行字！<br>
+        这是一行带有普通阴影的字！
+    </div>
+    <div id="box2">
+        这是一行字！<br>
+        这是一行浮雕字！
+    </div>
+    <div id="box3">
+        这是一行字！<br>
+        这是一行好像要飞入太空的字！
+    </div>
+    <div id="box4">
+        这是一行字！<br>
+        这是一行多重阴影字！
+    </div>
+
+    <div id="box5">
+        这是一行字！<br>
+        这是一行用多重阴影实现的3D字！
+    </div>
+
+</body>
+
+</html>

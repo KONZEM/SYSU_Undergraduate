@@ -1,0 +1,13 @@
+PUBLIC DELAY
+
+CODE SEGMENT 
+ASSUME CS:CODE
+DELAY PROC FAR  // ±ØÐë¼ÓPTR
+      PUSH CX
+      MOV CX, 0
+L:    LOOP L
+      POP CX
+      RET
+DELAY ENDP  		
+CODE  ENDS
+      END DELAY

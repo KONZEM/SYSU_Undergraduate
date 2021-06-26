@@ -1,0 +1,49 @@
+[System]
+Name='wash'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=9
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='mom'
+
+[Input1]
+Name='x'
+Range=[0 100]
+NumMFs=3
+MF1='SD':'trimf',[0 0 50]
+MF2='MD':'trimf',[0 50 100]
+MF3='LD':'trimf',[50 100 100]
+
+[Input2]
+Name='y'
+Range=[0 100]
+NumMFs=3
+MF1='NG':'trimf',[0 0 50]
+MF2='MG':'trimf',[0 50 100]
+MF3='LG':'trimf',[50 100 100]
+
+[Output1]
+Name='z'
+Range=[0 60]
+NumMFs=5
+MF1='VS':'trimf',[0 0 10]
+MF2='S':'trimf',[0 10 25]
+MF3='M':'trimf',[10 25 40]
+MF4='L':'trimf',[25 40 60]
+MF5='VL':'trimf',[40 60 60]
+
+[Rules]
+1 1, 1 (1) : 1
+1 2, 3 (1) : 1
+1 3, 4 (1) : 1
+2 1, 2 (1) : 1
+2 2, 3 (1) : 1
+2 3, 4 (1) : 1
+3 1, 3 (1) : 1
+3 2, 4 (1) : 1
+3 3, 5 (1) : 1

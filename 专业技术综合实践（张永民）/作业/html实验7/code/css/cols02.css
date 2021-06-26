@@ -1,0 +1,44 @@
+       #mainbody .cols02 {
+            width: 272px;
+            margin: 5px 0px 0px 0px;
+            float: left;
+        }
+
+      H4 {
+            padding: 0px 0px 12px 5px;
+            margin: 16px 15px 0px 15px;
+            color: #006600;
+            font-size: 14px;
+            font-weight: bold;
+            background: url(../images/line.gif) repeat-x bottom;
+        }
+
+        .commonline {
+            border-bottom: 1px #CCCCCC solid;
+        }
+
+        .daohang {
+            font-weight: bold;
+            word-spacing: 5px;
+            margin: 5px 15px;
+            padding: 5px 5px;
+            color: #666666;
+            line-height: 28px;
+        }
+
+        .daohang A:link, .daohang A:visited, .daohang A:active, .daohang A:hover {
+                font-weight: bold;
+                text-decoration: none;
+        }
+
+   .weibo {
+            padding: 11px 0px 12px 0px;
+            _padding: 12px 0px;
+            margin: 0px;
+            text-align: right;
+        }
+
+        .weibo img {
+                margin: 0px 8px;
+                border: 0px;
+        }

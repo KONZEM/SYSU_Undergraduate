@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>menu</title>
+    <base href="http://www.sysu.edu.cn/2012/cn/">
+    <style>
+        a:link, a:visited {
+            text-decoration: none;
+            color: blue
+        }
+        .home {
+            background: url("F:/program/Web/js实验2/code/images/home.gif");
+            display: inline-block;
+            background-position-x: 30%;
+            background-position-y: 60%;
+            background-size: cover;
+        }
+        li {list-style-type: none;}
+        ul#nav {
+            background-color: rgb(224, 224, 224);
+            height: 20px;  
+        }
+        ul#nav>li {
+            float: left;
+            margin-right: 30px;
+            position: relative;
+            text-align: left;
+        }
+        ul#nav>li:nth-child(1) {text-align: center;}
+        li>ul>li {
+            width: 150px;
+            text-align: left;
+            background-color: rgb(224, 224, 224);
+        }
+        li>ul>li>a::before{content: "\00A0";}
+        li>ul {
+            position: absolute;
+            left: -40px;
+        }
+    </style>
+</head>
+<body>
+    <ul id="nav">
+        <li><a href="index.htm"><span class="home">&nbsp;&nbsp;&nbsp;</span></a>
+        </li>
+        <li><a href="zdgk/index.htm"><span>学校概况</span></a>
+            <ul>
+                <li><a href="zdgk/zdgk01/index.htm">中大简介</a></li>
+                <li><a href="zdgk/zdgk02/index.htm">中大校区</a></li>
+                <li><a href="zdgk/zdgk03/index.htm">现任领导</a></li>
+                <li><a href="zdgk/zdgk04/index.htm">管理服务</a></li>
+                <li><a href="zdgk/zdgk06/index.htm">校歌 校训 校徽</a></li>
+                <li><a href="zdgk/zdgk07/index.htm">数字中大</a></li>
+                <li><a href="zdgk/zdgk05/index.htm">中大校史</a></li>
+                <li><a href="zdgk/zdgk08/index.htm">中大图志</a></li>
+            </ul>
+        </li>
+        <li><a href="yx/index.htm"><span>院系设置</span></a>
+        </li>
+        <li><a href="xksz/index.htm"><span>学科与师资</span></a>
+            <ul>
+                <li><a href="xksz/xksz01/index.htm">学科建设</a></li>
+                <li><a href="xksz/xksz02/index.htm">人才名录</a></li>
+                <li><a href="xksz/xksz03/index.htm">名师垂范</a></li>
+            </ul>
+        </li>
+        <li><a href="jyjx/index.htm"><span>教育教学</span></a>
+            <ul>
+                <li><a href="jyjx/jyjx01/index.htm">本科教育</a></li>
+                <li><a href="jyjx/jyjx02/index.htm">研究生教育</a></li>
+                <li><a href="jyjx/jyjx03/index.htm">国际教育</a></li>
+                <li><a href="jyjx/jyjx04/index.htm">继续教育</a></li>
+            </ul>
+        </li>
+        <li><a href="kxyj/index.htm"><span>科学研究</span></a>
+            <ul>
+                <li><a href="kxyj/kxyj01/index.htm">重点研究机构</a></li>
+                <li><a href="kxyj/kxyj04/index.htm">学术期刊</a></li>
+                <li><a href="kxyj/kxyj05/index.htm">博士后科研流动站</a></li>
+            </ul>
+        </li>
+        <li><a href="zsjy/index.htm"><span>招生与就业</span></a>
+            <ul>
+                <li><a href="zsjy/zsjy01/index.htm">本科招生</a></li>
+                <li><a href="zsjy/zsjy02/index.htm">研究生招生</a></li>
+                <li><a href="zsjy/zsjy03/index.htm">留学生招生</a></li>
+                <li><a href="jyjx/jyjx04/index.htm">继续教育招生</a></li>
+                <li><a href="zsjy/zsjy04/index.htm">就业指导与服务</a></li>
+            </ul>
+        </li>
+        <li><a href="http://library.sysu.edu.cn"><span>图书馆</span></a>
+        </li>
+        <li><a href="rczp/index.htm"><span>人才招聘</span></a>
+        </li>
+        <li><a href="xyjj/index.htm"><span>校友与基金</span></a>
+        </li>
+        <li><a href="zjzd/index.htm"><span>走进中大</span></a>
+            <ul>
+                <li><a href="http://myspace.sysu.edu.cn">5D空间</a>
+                <li><a href="zjzd/zjzd02/index.htm">校区地图</a>
+                <li><a href="zjzd/zjzd03/index.htm">生活服务</a>
+                <li><a href="zjzd/zjzd04/index.htm">中大博物馆</a>
+                <li><a href="zjzd/zjzd05/index.htm">校园文化</a>
+            </ul>
+        </li>
+    </ul>
+    <script>
+        var li_com = document.querySelectorAll("#nav>li");
+        for (var i=0; i<li_com.length; ++i) {
+            if (li_com[i].childNodes.length == 4) {
+                li_com[i].childNodes[2].style.visibility = "hidden";
+            }
+            (function(ind) {
+                li_com[ind].addEventListener("mouseover", function() {
+                    if (li_com[ind].childNodes.length == 4) {
+                        li_com[ind].childNodes[2].style.visibility = "visible";
+                    }
+                });
+                li_com[ind].addEventListener("mouseout", function() {
+                    if (li_com[ind].childNodes.length == 4) {
+                        li_com[ind].childNodes[2].style.visibility = "hidden";
+                    }
+                });
+            })(i);
+        }
+    </script>
+</body>
+</html>

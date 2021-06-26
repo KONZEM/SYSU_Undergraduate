@@ -1,0 +1,70 @@
+1.
+INSERT 
+INTO STUDENTS
+VALUES ('800022222', 'Wanglan', null, null)
+
+2.
+INSERT 
+INTO TEACHERS
+VALUES ('200001000', 'LXL', 's4zrck@pew,net', 3024)
+
+3.
+UPDATE TEACHERS
+SET salary = 4000
+WHERE  tid = '200010493'
+
+4.
+UPDATE TEACHERS
+SET salary = 2500
+WHERE salary < 2500
+
+5.
+UPDATE CHOICES
+SET tid = (SELECT tid
+	   FROM TEACHERS
+           WHERE tname = 'rnupx')
+where tid = '200016731'
+
+6.
+UPDATE STUDENTS
+SET grade = 2001
+WHERE sid = '800071780'
+
+7.
+--创建一个临时表
+SELECT cid as cid
+INTO TMP
+FROM COURSES
+WHERE cid not in (SELECT cid
+	          FROM CHOICES)
+--删除外键
+DELETE
+FROM CHOICES
+WHERE cid in (SELECT cid
+	      FROM TMP)				
+DELETE 
+FROM COURSES
+WHERE cid in (SELECT cid
+              FROM TMP)
+
+8.
+--删除外键
+DELETE
+FROM CHOICES
+WHERE sid in (SELECT sid 
+	      FROM STUDENTS
+	      WHERE grade > 1998)			  
+DELETE 
+FROM STUDENTS
+WHERE grade > 1998
+
+9.
+DELETE 
+FROM STUDENTS
+WHERE sid not in (SELECT sid 
+		  FROM CHOICES)
+
+10.
+DELETE 
+FROM CHOICES
+WHERE score < 60

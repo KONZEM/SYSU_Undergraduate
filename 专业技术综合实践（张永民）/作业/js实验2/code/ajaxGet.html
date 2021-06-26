@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AJAX-get</title>
+  <style>
+     p {font-size:20px}
+   </style>
+</head>
+<body>
+  <h1>Ajax-get</h1>
+  <p>id：<input id="t1" type="text" onblur="get_info()"></p>
+  <p id="t2">[无]</p>
+  <script>
+      function get_info() {
+        var p = document.getElementById("t2");
+        p.innerHTML = "正在查询...";
+          var xmlhttp = new XMLHttpRequest();
+          xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4) {
+                if (xmlhttp.status >=200 && xmlhttp.status < 300 || xmlhttp.status == 304) {
+                    alert(xmlhttp.responseText);
+                    p.innerHTML = xmlhttp.responseText;
+                }
+                else alert("error");
+            }
+          };
+          xmlhttp.open("get", "http://103.26.79.35:8080/jsp/get.jsp?id=" + document.getElementById("t1").value, true);
+          xmlhttp.send(null);
+      }
+  </script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE  html>
+<html lang="zh-cn">
+   <head>
+      <meta charset="UTF-8">
+      <title>Blog Edit</title>
+      <style type="text/css">
+         * {font-size: 20px; font-family: 宋体}
+         input[type="text"], textarea {color: #B0B0B0}
+         [for="content"] {vertical-align: top;}
+         fieldset {width:800px; margin: 20px auto; padding:20px; background-color: #FCFCFF;}
+         #content {width:700px; height:300px}
+      </style>
+   </head>
+   <body>
+      <form action="edit.jsp" method="post">
+         <fieldset>
+            <legend>修改博客</legend>
+            <label for="title">标题：</label> 
+            <input id="title" name="title" type="text" style="width: 60%" value="输入博客标题"/>
+            <br /> <br />
+            关键字：<input id="keywords" name="keywords" type="text" style="width: 60%" value="输入关键字" />
+            <br /> <br />
+            布局：<input name="layout" type="radio" value="layout1" />
+                  <img src="layout1.jpg" alt="layout1" title="layout1" />
+                  <input name="layout" type="radio" value="layout2" checked />
+                  <img src="layout2.jpg" alt="layout2" title="layout2" />
+                  <input name="layout" type="radio" value="layout3" />
+                  <img src="layout3.jpg" alt="layout3" title="layout3" />
+            <br /> <br />
+            背景：<select name="backgroud" >
+                     <option value="bg1">背景1</option>
+                     <option value="bg2" selected>背景2</option>
+                     <option value="bg3">背景3</option>
+                     <option value="bg4">背景4</option>
+                  </select>
+            <br /> <br />
+            适合群体：<input name="group" type="checkbox" value="gp1"/> 学前班
+                     <input name="group" type="checkbox" value="gp2" /> 小学生
+                     <input name="group" type="checkbox" value="gp3" checked /> 中学生
+                     <input name="group" type="checkbox" value="gp4" /> 成年人
+            <br /> <br />
+            内容：<textarea id="content" name="content" style="vertical-align: top">在这里输入博客内容</textarea>
+            <!-- placeholder="在这里输入博客内容" -->
+            <br /> <br />
+            <input name="save" type="submit" value="保存" />
+            <input name="exit" type="submit" value="退出" />
+            <button name="reset" type="reset" value="复位">复位</button>
+         </fieldset>
+      </form>
+      <script type="text/javascript">
+         function inputClick(target){
+         var value="";
+         if(target.id=="title")
+            value="输入博客标题";
+         if(target.id=="keywords")
+            value="输入关键字";
+         if(target.id=="content")
+            value="在这里输入博客内容";
+
+         if(target.value==''){
+            target.style.color="#B0B0B0";
+            target.value=value;
+         }
+         else 
+         if(target.value==value){
+            target.style.color="#000000";
+            target.value="";
+         }
+         };
+         var f1=function(){inputClick(this);};
+         document.getElementById("title").onclick= f1;
+         document.getElementById("keywords").onclick= f1;
+         document.getElementById("content").onclick= f1;
+         document.getElementById("title").onblur= f1;
+         document.getElementById("keywords").onblur= f1;
+         document.getElementById("content").onblur= f1;
+      </script>
+   </body>
+</html>

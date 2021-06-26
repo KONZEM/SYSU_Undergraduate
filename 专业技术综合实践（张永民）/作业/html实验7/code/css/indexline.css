@@ -1,0 +1,27 @@
+        #indexline {
+            height: 300px;
+            margin: 0px;
+            padding: 0px;
+            overflow: hidden;
+            background: #043311;
+        }
+
+        #box {
+            width: 228px;
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+            margin: 0px auto 0;
+            float: right;
+            color: #FFF;
+            z-index: 1;
+        }
+
+       #content_main {
+            padding: 0;
+            margin: 0px 0 0px 0;
+            float: left;
+            width: 770px;
+            border: 0px solid #e6e4db;
+            height: 300px;
+        }

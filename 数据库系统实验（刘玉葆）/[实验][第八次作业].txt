@@ -1,0 +1,33 @@
+1.
+CREATE TABLE CLASS(
+	class_id VARCHAR(4),
+	name VARCHAR(10),
+	department VARCHAR(20),
+	CONSTRAINT PK_CLASS PRIMARY KEY (class_id));
+
+2.
+CREATE TABLE Stu_Union(
+	sno CHAR(5) NOT NULL UNIQUE,
+	sname CHAR(8),
+	ssex CHAR(1),
+	saage INT,
+	sdept CHAR (20),
+	CONSTRAINT PK_Stu_Union PRIMARY KEY(sno)
+	);
+----------------------------------------------
+SET XACT_ABORT ON
+BEGIN TRANSACTION T3
+BEGIN TRANSACTION T4
+INSERT INTO Stu_Union VALUES ('0001', '01CSC', NULL, NULL, 'CS');
+COMMIT TRANSACTION T4
+INSERT INTO Stu_Union VALUES ('0001', '01CSC', NULL, NULL, 'CS');
+COMMIT TRANSACTION T3
+----------------------------------------------
+结果是插入失败，在事务T4中插入是成功的，但在事务T3中插入同一个元组，而Stu_Union表限制了sno属性是唯一的，所以在事务T3中执行失败，而且SET XACT_ABORT ON存在，导致整个事务回滚。所以结果是('0001', '01CSC', NULL, NULL, 'CS')该元组没有插入成功，尽管在事务T4中插入成功了。
+
+
+
+##################################################################
+####COMMIT TRANSACTION作用是：一旦提交了事务，就无法回退了(X)######
+##########经上面的测试，T4还是被回滚，所以上面说的是错的###########
+##################################################################

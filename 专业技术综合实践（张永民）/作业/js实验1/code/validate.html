@@ -1,0 +1,30 @@
+<!DOCTYPE  html>
+<html  lang="zh-cn">
+<head>
+    <title>验证正确性</title>
+    <style>
+        p:first-of-type::before {content: "。。。"; color: white} /*为了对齐*/
+    </style>
+    <script>
+        function submit1() {
+            var pass1 = document.getElementById("pass1");
+            var pass2 = document.getElementById("pass2");
+            if (pass1.value != pass2.value) {
+                alert("两次输入的密码不相等");
+                pass1.value = "";
+                pass2.value = "";
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <h1 style="text-align:center">验证正确性</h1>
+    <form action="OK.jsp" method="post">
+        <p style="white-space: pre;">          密码：<input type="password" id="pass1"></p>
+        <p style="white-space: pre;">          重输入密码：<input type="password" id="pass2"></p>
+        <p style="text-align:center"><input type="submit" value="提交" onclick="return submit1();"></p>
+    </form>
+</body>
+</html>
