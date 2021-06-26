@@ -1,0 +1,77 @@
+;Kernal Data
+#def NR_REGS 11  /*8086CPU内部寄存器数目 */ 
+#def NR_SEGS 3   /*用户进程的分段数目 */
+#def NR_TASKS 8   /*系统任务进程数目 */
+#def NR_PROCS 16   /*用户进程数目 */
+#def TASK_STACK_BYTES 256
+#def K_STACK_BYTES 256
+
+type real_time realtime
+
+struct pc_psw {
+   int (*pc)();
+   phys cs;
+   unsigned psw;  
+}
+
+struct mem_map{
+   vir_clicks mem_vir;
+   phys_clicks mem_phys;
+   vir_clicks mem_len;  
+}
+
+
+
+
+esreg=14
+dsreg=16
+csreg=18
+ssreg=20
+SP=22
+PC=24
+PSW=28
+SPLIM=50
+OFF=18
+ROFF=12
+
+typedef struct {
+   int m_source;
+   int m_type;
+   union {
+   mess_1 m_m1;
+   mess_2 m_m2;
+   mess_3 m_m3;
+   mess_4 m_m4;
+   mess_5 m_m5;
+   mess_6 m_m6;
+   } m_u;
+}
+
+struct t_task{
+   int stk[TASK_STACK_BYTES/sizeof(int)];
+} t_task[NR_TASKS-1];
+
+struct proc {
+    int p_reg[NR_REGS];
+    int *p_sp;
+    struct pc_psw p_pcpsw;
+    int p_flags;
+    struct mem_map p_map[NR_SEG];
+    int *p_slimit;
+    int p_pid;
+    real_time user_time; 
+    real_time sys_time;
+    real_time child_utime;
+    real_time child_stime;
+    real_time p_alarm;
+    struct proc *p_callerq;
+    struct proc *p_sendlink;
+    message *p_messbuf;
+    int p_getfrom;
+    struct proc *p_nestready;
+    int p_pending;
+} proc[NR_PROCS+NR_TASKS];
+
+char   k_stack[K_STACK_BYTES]
+struct proc *proc_ptr
+

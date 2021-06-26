@@ -1,0 +1,9 @@
+{there is an example;
+test \n}
+int A, B;
+bool C$, C2, C3;
+string D;
+D := 'scanner;
+while A <= B do
+    A := A * 2
+end
